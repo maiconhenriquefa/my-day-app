@@ -1,21 +1,19 @@
 import React from 'react';
 import {
-  Alert,
   TextInput,
   View,
   Image,
   Text,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import styles from './styles';
 
-function Login() {
-  function handleClick() {
-    Alert.alert('Segunda tela', 'Ainda em construção ...');
-  }
-
+function Login({navigation}) {
   return (
-    <View>
+    <View style={styles.container}>
+      <StatusBar backgroundColor={'#fff'} barStyle="dark-content" />
       <Image
         style={styles.logo}
         source={require('../../assets/logo-tempo.png')}
@@ -29,7 +27,7 @@ function Login() {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          handleClick();
+          navigation.navigate('Home');
         }}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>

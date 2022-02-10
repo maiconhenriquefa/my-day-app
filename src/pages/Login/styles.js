@@ -1,6 +1,15 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#304FFE',
+  },
+  statusBar: {
+    backgroundColor: '#fff',
+  },
   logo: {
     maxWidth: '100%',
     alignSelf: 'center',
@@ -33,6 +42,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
     lineHeight: 19,
+    textTransform: 'uppercase',
     color: '#304FFE',
   },
 });
