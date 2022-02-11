@@ -1,18 +1,10 @@
 import React from 'react';
-import {
-  TextInput,
-  View,
-  Image,
-  Text,
-  TouchableOpacity,
-  StatusBar,
-} from 'react-native';
+import {TextInput, View, Image, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
 function Login({navigation}) {
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={'#fff'} barStyle="dark-content" />
       <Image
         style={styles.logo}
         source={require('../../assets/logo-tempo.png')}
@@ -26,7 +18,7 @@ function Login({navigation}) {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate('Home');
+          navigation.navigate('Main');
         }}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
