@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../../pages/Home/index';
 
 const Tab = createBottomTabNavigator();
+
 function BarNavigation() {
   return (
     <Tab.Navigator>

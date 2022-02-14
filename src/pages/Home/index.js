@@ -1,13 +1,16 @@
 import {View, Text, Image} from 'react-native';
+import Entypo from 'react-native-vector-icons/Entypo';
 import React from 'react';
 import styles from './styles';
 
 const Home = () => {
   return (
     <View style={styles.container}>
-      <Image
+      <Entypo
         style={styles.nothingImage}
-        source={require('../../assets/icons/NothingDay.png')}
+        name="emoji-neutral"
+        color="#ACACAC"
+        size={48}
       />
       <Text style={styles.text}>
         Você ainda não tem nenhum registro diário. Para começar, toque no ícone

@@ -1,32 +1,43 @@
 import React from 'react';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import Home from './pages/Home/index';
-import Add from './pages/Add/index';
-import Settings from './pages/Settings/index';
-import styles from './styles';
-import LinearGradient from 'react-native-linear-gradient';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import Home from './pages/Home';
+import Add from './pages/Add';
+import Settings from './pages/Settings';
+
 import ButtonAdd from './components/ButtonAdd';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Tab = createMaterialBottomTabNavigator();
+import styles from './styles';
+
+const Tab = createBottomTabNavigator();
 
 function Routes() {
   return (
     <Tab.Navigator
-      style={styles.navBar}
-      inactiveColor="rgba(255,255,255, 0.5)"
-      activeColor="#304FFE"
-      tabBarOptions={{
-        activeTintColor: '#9C27B0',
-        inactiveTintColor: '#777',
-        showLabel: false,
+      screeOptions={{
+        style: {
+          backgroundColor: '#000000',
+        },
+        activeTintColor: '#304FFE',
+        tabStyle: {
+          paddingBottom: 100,
+          paddingTop: 100,
+        },
+        labelStyle: {
+          fontSize: 12,
+        },
+      }}
+      screenOptions={{
+        headerShown: false,
+        tabBarLabel: () => {
+          return null;
+        },
       }}>
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarLabel: 'Home',
-          tabBarColor: '#ffffff',
           tabBarIcon: ({color}) => <Icon name="home" color={color} size={24} />,
         }}
       />
@@ -34,7 +45,6 @@ function Routes() {
         name="Add"
         component={Add}
         options={{
-          tabBarLabel: 'Add',
           tabBarIcon: ({color}) => <ButtonAdd color={color} />,
         }}
       />
@@ -42,7 +52,6 @@ function Routes() {
         name="Settings"
         component={Settings}
         options={{
-          tabBarLabel: 'Settings',
           tabBarIcon: ({color}) => <Icon name="list" color={color} size={24} />,
         }}
       />
