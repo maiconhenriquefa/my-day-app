@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './styles';
 import Login from './pages/Login/';
 import Main from './pages/Main';
+import Status from './pages/Status';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -19,6 +20,7 @@ function App() {
         }}>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Status" component={Status} />
       </Stack.Navigator>
     </NavigationContainer>
   );
