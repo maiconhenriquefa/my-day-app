@@ -8,8 +8,6 @@ import Settings from './pages/Settings';
 import ButtonAdd from './components/ButtonAdd';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import styles from './styles';
-
 const Tab = createBottomTabNavigator();
 
 function Routes() {

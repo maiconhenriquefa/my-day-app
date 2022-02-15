@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     minHeight: 158,
     backgroundColor: '#FFFFFF',
-    marginBottom: 25,
+    marginTop: 25,
     marginHorizontal: 20,
     borderRadius: 20,
     elevation: 10,
@@ -19,8 +19,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   item__emoticon: {
+    width: 57,
+    height: 57,
     marginRight: 10,
-    fontSize: 57,
   },
   item__status: {
     justifyContent: 'center',

@@ -1,15 +1,12 @@
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, Image} from 'react-native';
 import React from 'react';
 import styles from './styles';
 
 import CommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import Emoji from 'react-native-emoji';
-import Main from '../Main';
 
-function Status(icon) {
+function Status() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.hours}>
@@ -21,7 +18,10 @@ function Status(icon) {
         <Text style={styles.date.text}>hoje 23 de janeiro</Text>
       </View>
       <View style={styles.status}>
-        <Emoji name="grinning" style={styles.status.emotion} />
+        <Image
+          style={styles.status.emotion}
+          source={require('./../../assets/happy.png')}
+        />
         <Text style={styles.status.text}>Bem</Text>
       </View>
       <View style={styles.options}>

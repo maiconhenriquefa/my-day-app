@@ -3,7 +3,7 @@ import styles from './styles';
 import ItemStatus from '../../components/ItemStatus';
 import {SafeAreaView, ScrollView, TouchableOpacity, Text} from 'react-native';
 
-function Add({navigation, route}) {
+function Add({navigation}) {
   // const [dayList, setDayList] = React.useState([]);
 
   return (
@@ -13,42 +13,38 @@ function Add({navigation, route}) {
           onPress={() => {
             navigation.navigate('Status');
           }}>
-          <ItemStatus statusEmoji="grinning" statusText="BEM" color="red" />
+          <ItemStatus statusEmoji="happy" statusText="BEM" color="red" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Status');
             navigation.setOptions({tabBarVisible: false});
           }}>
-          <ItemStatus
-            statusEmoji="disappointed"
-            statusText="MAL"
-            color="blue"
-          />
+          <ItemStatus statusEmoji="confused" statusText="MAL" color="blue" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Status');
           }}>
-          <ItemStatus statusEmoji="sob" statusText="TRISTE" color="green" />
+          <ItemStatus statusEmoji="sad" statusText="TRISTE" color="green" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Status');
           }}>
-          <ItemStatus statusEmoji="grinning" statusText="BEM" color="red" />
+          <ItemStatus statusEmoji="happy" statusText="BEM" color="red" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Status');
           }}>
-          <ItemStatus statusEmoji="grinning" statusText="BEM" color="red" />
+          <ItemStatus statusEmoji="happy" statusText="BEM" color="red" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Status');
           }}>
-          <ItemStatus statusEmoji="grinning" statusText="BEM" color="red" />
+          <ItemStatus statusEmoji="happy" statusText="BEM" color="red" />
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>

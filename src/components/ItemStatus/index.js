@@ -1,18 +1,19 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import CommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
-import Emoji from 'react-native-emoji';
 
 // https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json"grinning"
-
-function ItemStatus({statusText, statusEmoji, color}) {
+function ItemStatus({statusText, color}) {
   return (
     <View style={styles.item}>
       <View style={styles.item__header}>
-        <Emoji name={statusEmoji} style={styles.item__emoticon} />
+        <Image
+          style={styles.item__emoticon}
+          source={require(`./../../assets/happy.png`)}
+        />
         <View style={styles.item__status}>
           <Text>HOJE, 23 DE JANEIRO</Text>
           <View style={styles.item__details}>

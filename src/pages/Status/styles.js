@@ -32,8 +32,9 @@ const styles = StyleSheet.create({
   },
   status: {
     alignItems: 'center',
-    marginVertical: 10,
+    marginVertical: 20,
     text: {
+      marginTop: 10,
       color: '#E24B4B',
       fontFamily: 'Source Sans Pro',
       fontWeight: 'bold',
@@ -41,7 +42,8 @@ const styles = StyleSheet.create({
       textTransform: 'uppercase',
     },
     emotion: {
-      fontSize: 57,
+      width: 57,
+      height: 57,
     },
   },
   options: {

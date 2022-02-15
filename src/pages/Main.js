@@ -3,7 +3,7 @@ import Routes from '../routes';
 import styles from './styles';
 
 function Main() {
-  return <Routes />;
+  return <Routes style={styles.container} />;
 }
 
 export default Main;
