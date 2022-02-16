@@ -1,62 +1,44 @@
 import React from 'react';
 import styles from './styles';
 import ItemStatus from '../../components/ItemStatus';
-import {SafeAreaView, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+  FlatList,
+  View,
+  Text,
+} from 'react-native';
+
+import Data from '../../mocks';
 
 function Add({navigation}) {
   // const [dayList, setDayList] = React.useState([]);
+  const renderItem = ({item: {title, image, text, color}}) => {
+    return (
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => {
+          navigation.navigate('Status');
+        }}>
+        <ItemStatus
+          statusEmoji={image}
+          statusText={text}
+          statusTitle={title}
+          color={color}
+        />
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={{
-          paddingBottom: 25,
-        }}>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => {
-            navigation.navigate('Status');
-          }}>
-          <ItemStatus statusEmoji="happy" statusText="BEM" color="red" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => {
-            navigation.navigate('Status');
-            navigation.setOptions({tabBarVisible: false});
-          }}>
-          <ItemStatus statusEmoji="confused" statusText="MAL" color="blue" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => {
-            navigation.navigate('Status');
-          }}>
-          <ItemStatus statusEmoji="sad" statusText="TRISTE" color="green" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => {
-            navigation.navigate('Status');
-          }}>
-          <ItemStatus statusEmoji="happy" statusText="BEM" color="red" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => {
-            navigation.navigate('Status');
-          }}>
-          <ItemStatus statusEmoji="happy" statusText="BEM" color="red" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => {
-            navigation.navigate('Status');
-          }}>
-          <ItemStatus stylestatusEmoji="happy" statusText="BEM" color="red" />
-        </TouchableOpacity>
-      </ScrollView>
+      <FlatList
+        contentContainerStyle={{paddingBottom: 25}}
+        data={Data}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
     </SafeAreaView>
   );
 }

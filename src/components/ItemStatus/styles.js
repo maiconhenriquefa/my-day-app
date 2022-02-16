@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  item__title: {
+    marginRight: 10,
+    fontFamily: 'Source Sans Pro',
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
   item__situation: {
     marginRight: 10,
     fontFamily: 'Source Sans Pro',
