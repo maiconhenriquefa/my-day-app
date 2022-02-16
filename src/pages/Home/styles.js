@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     width: 258,
     textAlign: 'center',
     fontFamily: 'Source Sans Pro',
-    fontSize: 18,
+    fontSize: 16,
     lineHeight: 23,
     letterSpacing: -0.3,
     color: '#ACACAC',

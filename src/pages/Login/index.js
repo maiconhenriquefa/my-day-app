@@ -17,9 +17,7 @@ function Login({navigation}) {
       />
       <TouchableOpacity
         style={styles.button}
-        onPress={() => {
-          navigation.navigate('Main');
-        }}>
+        onPress={() => navigation.navigate('HomeStackScreen')}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
     </View>

@@ -1,12 +1,13 @@
 import React from 'react';
-import styles from './styles';
-import Login from './pages/Login/';
-import Main from './pages/Main';
-import Status from './pages/Status';
+
+import {StatusBar} from 'react-native';
+
+import Login from './pages/Login';
+import HomeStackScreen from './routes/HomeStackScreen.routes';
 
 import {NavigationContainer} from '@react-navigation/native';
+import styles from './styles';
 import {createStackNavigator} from '@react-navigation/stack';
-import {StatusBar} from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -19,8 +20,7 @@ function App() {
           headerShown: false,
         }}>
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Main" component={Main} />
-        <Stack.Screen name="Status" component={Status} />
+        <Stack.Screen name="HomeStackScreen" component={HomeStackScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

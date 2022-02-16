@@ -1,16 +1,14 @@
 import React from 'react';
+import AddStackScreen from './AddStackScreen.routes';
+import Settings from '../pages/Settings';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
-import Home from './pages/Home';
-import Add from './pages/Add';
-import Settings from './pages/Settings';
-
-import ButtonAdd from './components/ButtonAdd';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import ButtonAdd from '../components/ButtonAdd';
+import Home from '../pages/Home';
 
 const Tab = createBottomTabNavigator();
 
-function Routes() {
+function HomeStaackSreen() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -31,8 +29,8 @@ function Routes() {
         }}
       />
       <Tab.Screen
-        name="Add"
-        component={Add}
+        name="AddStackScreen"
+        component={AddStackScreen}
         options={{
           tabBarIcon: ({color}) => <ButtonAdd color={color} />,
         }}
@@ -48,4 +46,4 @@ function Routes() {
   );
 }
 
-export default Routes;
+export default HomeStaackSreen;
