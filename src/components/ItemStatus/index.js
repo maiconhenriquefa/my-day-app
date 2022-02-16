@@ -35,7 +35,12 @@ function ItemStatus({statusText, statusTitle, statusEmoji, color}) {
         <Text style={styles.item__options.text}>passeio</Text>
       </View>
       <View>
-        <Text style={styles.item_description}>{statusText}</Text>
+        <Text
+          style={styles.item_description}
+          numberOfLines={1}
+          ellipsizeMode="tail">
+          {statusText}
+        </Text>
       </View>
     </View>
   );

@@ -10,15 +10,21 @@ import {
   Text,
 } from 'react-native';
 
-import Data from '../../mocks';
+import DataList from '../../mocks/statusList';
+import DataItem from '../../mocks/statusItem';
 
 function Add({navigation}) {
   // const [dayList, setDayList] = React.useState([]);
-  const renderItem = ({item: {title, image, text, color}}) => {
+  const renderItem = ({item: {title, image, text, color, id}}) => {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => {
+          DataItem.title = title;
+          DataItem.image = image;
+          DataItem.text = text;
+          DataItem.color = color;
+          DataItem.id = id;
           navigation.navigate('Status');
         }}>
         <ItemStatus
@@ -35,7 +41,7 @@ function Add({navigation}) {
     <SafeAreaView style={styles.container}>
       <FlatList
         contentContainerStyle={{paddingBottom: 25}}
-        data={Data}
+        data={DataList}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />

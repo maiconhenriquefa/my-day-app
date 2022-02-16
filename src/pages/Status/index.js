@@ -7,6 +7,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
+import Data from '../../mocks/statusItem';
+
 function Status({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
@@ -24,11 +26,10 @@ function Status({navigation}) {
         <Text style={styles.date.text}>hoje 23 de janeiro</Text>
       </View>
       <View style={styles.status}>
-        <Image
-          style={styles.status.emotion}
-          source={require('./../../assets/happy.png')}
-        />
-        <Text style={styles.status.text}>Bem</Text>
+        <Image style={styles.status.emotion} source={Data.image} />
+        <Text style={[styles.status.text, {color: Data.color}]}>
+          {Data.title}
+        </Text>
       </View>
       <View style={styles.options}>
         <View style={styles.options__item}>
@@ -45,11 +46,7 @@ function Status({navigation}) {
         </View>
       </View>
       <View style={styles.description}>
-        <Text style={styles.description.text}>
-          Hoje foi um dia muito bom. Joguei futebol no parque, cozinhei uma
-          lasanha para minha família. E à noite, fui à festa de aniversário do
-          meu amigo.
-        </Text>
+        <Text style={styles.description.text}>{Data.text}</Text>
       </View>
     </SafeAreaView>
   );
