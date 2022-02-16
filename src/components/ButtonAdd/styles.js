@@ -3,10 +3,9 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   iconTabRound: {
     backgroundColor: '#304FFE',
-    width: 52,
-    height: 52,
+    width: 54,
+    height: 54,
     borderRadius: 30,
-    marginBottom: 20,
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 2,

@@ -32,14 +32,17 @@ function ItemStatus({statusText, color}) {
         </View>
       </View>
       <View style={styles.item__options}>
-        <CommunityIcons name="party-popper" color="black" size={20} />
-        <Text>festa</Text>
+        <CommunityIcons
+          style={styles.options__activities}
+          name="party-popper"
+        />
+        <Text style={styles.item__options.text}>festa</Text>
         <Entypo name="dot-single" color="black" size={20} />
-        <Icon name="sports-basketball" color="black" size={20} />
-        <Text>esporte</Text>
+        <Icon style={styles.options__activities} name="sports-basketball" />
+        <Text style={styles.item__options.text}>esporte</Text>
         <Entypo name="dot-single" color="black" size={20} />
-        <CommunityIcons name="car-side" color="black" size={20} />
-        <Text>passeio</Text>
+        <CommunityIcons style={styles.options__activities} name="car-side" />
+        <Text style={styles.item__options.text}>passeio</Text>
       </View>
       <View>
         <Text style={styles.item_description}>

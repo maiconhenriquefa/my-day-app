@@ -1,4 +1,9 @@
 {
   "name": "my_day_app",
-  "displayName": "my_day_app"
+  "displayName": "my_day_app",
+  "splash": {
+    "image": "./src/assets/happy.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#f00"
+  }
 }

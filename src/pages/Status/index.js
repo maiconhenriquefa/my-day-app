@@ -1,14 +1,20 @@
-import {View, Text, SafeAreaView, Image} from 'react-native';
 import React from 'react';
+import {View, Text, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
 import CommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
-function Status() {
+function Status({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity
+        style={styles.item__backLeft}
+        onPress={() => navigation.goBack()}>
+        <AntDesign name="left" style={styles.item__backLeft.icon} />
+      </TouchableOpacity>
       <View style={styles.hours}>
         <SimpleLineIcons name="clock" color="#969696" size={14} />
         <Text style={styles.hours.text}>08:35</Text>

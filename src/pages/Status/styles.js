@@ -3,13 +3,29 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
     backgroundColor: '#E5E5E5',
     paddingTop: 47,
     paddingHorizontal: 22,
   },
+  item__backLeft: {
+    position: 'absolute',
+    top: 11,
+    left: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 36,
+    height: 36,
+    backgroundColor: 'rgba(48, 79, 254, 0.1)',
+    borderRadius: 9,
+    icon: {
+      fontSize: 20,
+      color: '#304FFE',
+    },
+  },
   hours: {
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     text: {
       marginLeft: 10,
@@ -20,6 +36,7 @@ const styles = StyleSheet.create({
   },
   date: {
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     marginTop: 3,
     text: {

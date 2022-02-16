@@ -13,23 +13,14 @@ const Tab = createBottomTabNavigator();
 function Routes() {
   return (
     <Tab.Navigator
-      screeOptions={{
-        style: {
-          backgroundColor: '#000000',
-        },
-        activeTintColor: '#304FFE',
-        tabStyle: {
-          paddingBottom: 100,
-          paddingTop: 100,
-        },
-        labelStyle: {
-          fontSize: 12,
-        },
-      }}
       screenOptions={{
         headerShown: false,
-        tabBarLabel: () => {
-          return null;
+        tabBarActiveTintColor: '#304FFE',
+        tabBarinactiveTintColor: '#000',
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: '#fff',
+          height: 90,
         },
       }}>
       <Tab.Screen

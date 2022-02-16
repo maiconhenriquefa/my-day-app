@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   item: {
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     minHeight: 158,
     backgroundColor: '#FFFFFF',
     marginTop: 25,
@@ -17,11 +17,12 @@ const styles = StyleSheet.create({
   },
   item__header: {
     flexDirection: 'row',
+    marginBottom: 10,
   },
   item__emoticon: {
     width: 57,
     height: 57,
-    marginRight: 10,
+    marginRight: 20,
   },
   item__status: {
     justifyContent: 'center',
@@ -41,7 +42,18 @@ const styles = StyleSheet.create({
   },
   item__options: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
+    text: {
+      fontSize: 12,
+      fontWeight: 'bold',
+      color: '#000',
+      marginRight: 5,
+    },
+  },
+  options__activities: {
+    fontSize: 20,
+    marginRight: 10,
+    color: 'black',
   },
   item_description: {
     color: '#ACACAC',
