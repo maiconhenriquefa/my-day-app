@@ -14,7 +14,7 @@ function ItemStatus({
   hours,
   activities,
 }) {
-  const [activitiesOne, activitiesTwo, activitiesThree] = activities;
+  const {activitieOne, activitieTwo, activitieThree} = activities;
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -30,14 +30,20 @@ function ItemStatus({
         </View>
       </View>
       <View style={styles.options}>
-        <CommunityIcons style={styles.options.activities} name="party-popper" />
-        <Text style={styles.options.text}>{activitiesOne}</Text>
+        <CommunityIcons
+          style={styles.options.activities}
+          name={activitieOne.icon}
+        />
+        <Text style={styles.options.text}>{activitieOne.name}</Text>
         <Entypo name="dot-single" color="black" size={20} />
-        <Icon style={styles.options.activities} name="sports-basketball" />
-        <Text style={styles.options.text}>{activitiesTwo}</Text>
+        <Icon style={styles.options.activities} name={activitieTwo.icon} />
+        <Text style={styles.options.text}>{activitieTwo.name}</Text>
         <Entypo name="dot-single" color="black" size={20} />
-        <CommunityIcons style={styles.options.activities} name="car-side" />
-        <Text style={styles.options.text}>{activitiesThree}</Text>
+        <CommunityIcons
+          style={styles.options.activities}
+          name={activitieThree.icon}
+        />
+        <Text style={styles.options.text}>{activitieThree.name}</Text>
       </View>
       <View>
         <Text style={styles.description} numberOfLines={1} ellipsizeMode="tail">

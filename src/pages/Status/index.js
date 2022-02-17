@@ -19,11 +19,11 @@ function Status({navigation}) {
       </TouchableOpacity>
       <View style={styles.hours}>
         <SimpleLineIcons name="clock" color="#969696" size={14} />
-        <Text style={styles.hours.text}>08:35</Text>
+        <Text style={styles.hours.text}>{Data.hours}</Text>
       </View>
       <View style={styles.date}>
         <SimpleLineIcons name="calendar" color="#969696" size={14} />
-        <Text style={styles.date.text}>hoje 23 de janeiro</Text>
+        <Text style={styles.date.text}>{Data.date}</Text>
       </View>
       <View style={styles.status}>
         <Image style={styles.status.emotion} source={Data.image} />
@@ -33,16 +33,31 @@ function Status({navigation}) {
       </View>
       <View style={styles.options}>
         <View style={styles.options__item}>
-          <CommunityIcons name="party-popper" style={styles.item__icon} />
-          <Text style={styles.item__text}>festa</Text>
+          <CommunityIcons
+            name={Data.activities.activitieOne.icon}
+            style={styles.item__icon}
+          />
+          <Text style={styles.item__text}>
+            {Data.activities.activitieOne.name}
+          </Text>
         </View>
         <View style={styles.options__item}>
-          <Icon name="sports-basketball" style={styles.item__icon} />
-          <Text style={styles.item__text}>esporte</Text>
+          <Icon
+            name={Data.activities.activitieTwo.icon}
+            style={styles.item__icon}
+          />
+          <Text style={styles.item__text}>
+            {Data.activities.activitieTwo.name}
+          </Text>
         </View>
         <View style={styles.options__item}>
-          <CommunityIcons name="car-side" style={styles.item__icon} />
-          <Text style={styles.item__text}>passeio</Text>
+          <CommunityIcons
+            name={Data.activities.activitieThree.icon}
+            style={styles.item__icon}
+          />
+          <Text style={styles.item__text}>
+            {Data.activities.activitieThree.name}
+          </Text>
         </View>
       </View>
       <View style={styles.description}>
