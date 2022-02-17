@@ -14,8 +14,7 @@ function ItemStatus({
   hours,
   activities,
 }) {
-  // let [activitiesOne, activitiesTwo, activitiesThree] = activities;
-  console.warn(Array.from(activities));
+  const [activitiesOne, activitiesTwo, activitiesThree] = activities;
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -32,13 +31,13 @@ function ItemStatus({
       </View>
       <View style={styles.options}>
         <CommunityIcons style={styles.options.activities} name="party-popper" />
-        <Text style={styles.options.text}>{}</Text>
+        <Text style={styles.options.text}>{activitiesOne}</Text>
         <Entypo name="dot-single" color="black" size={20} />
         <Icon style={styles.options.activities} name="sports-basketball" />
-        <Text style={styles.options.text}>{}</Text>
+        <Text style={styles.options.text}>{activitiesTwo}</Text>
         <Entypo name="dot-single" color="black" size={20} />
         <CommunityIcons style={styles.options.activities} name="car-side" />
-        <Text style={styles.options.text}>{}</Text>
+        <Text style={styles.options.text}>{activitiesThree}</Text>
       </View>
       <View>
         <Text style={styles.description} numberOfLines={1} ellipsizeMode="tail">
