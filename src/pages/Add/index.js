@@ -1,29 +1,27 @@
 import React from 'react';
 import styles from './styles';
 import ItemStatus from '../../components/ItemStatus';
-import {
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-  FlatList,
-  View,
-  Text,
-} from 'react-native';
+import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
 
 import DataList from '../../mocks/statusList';
 import DataItem from '../../mocks/statusItem';
 
 function Add({navigation}) {
   // const [dayList, setDayList] = React.useState([]);
-  const renderItem = ({item: {title, image, text, color, id}}) => {
+  const renderItem = ({
+    item: {image, date, hours, title, color, activities, text, id},
+  }) => {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => {
-          DataItem.title = title;
           DataItem.image = image;
-          DataItem.text = text;
+          DataItem.date = date;
+          DataItem.hours = hours;
+          DataItem.title = title;
           DataItem.color = color;
+          DataItem.activities = activities;
+          DataItem.text = text;
           DataItem.id = id;
           navigation.navigate('Status');
         }}>
@@ -32,6 +30,9 @@ function Add({navigation}) {
           statusText={text}
           statusTitle={title}
           color={color}
+          activities={activities}
+          hours={hours}
+          date={date}
         />
       </TouchableOpacity>
     );

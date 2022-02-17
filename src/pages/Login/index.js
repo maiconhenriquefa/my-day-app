@@ -17,7 +17,12 @@ function Login({navigation}) {
       />
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('HomeStackScreen')}>
+        onPress={() =>
+          navigation.reset({
+            index: 0,
+            routes: [{name: 'HomeStackScreen'}],
+          })
+        }>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
     </View>

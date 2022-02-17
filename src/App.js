@@ -1,5 +1,11 @@
 import React from 'react';
 
+import {LogBox} from 'react-native';
+
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
+]);
+
 import {StatusBar} from 'react-native';
 
 import Login from './pages/Login';

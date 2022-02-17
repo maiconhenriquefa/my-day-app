@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  item: {
+  container: {
     justifyContent: 'space-evenly',
     minHeight: 158,
     backgroundColor: '#FFFFFF',
@@ -15,38 +15,35 @@ const styles = StyleSheet.create({
     paddingHorizontal: 28,
     paddingVertical: 15,
   },
-  item__header: {
+  header: {
     flexDirection: 'row',
     marginBottom: 10,
   },
-  item__emoticon: {
+  emoticon: {
     width: 57,
     height: 57,
     marginRight: 20,
   },
-  item__status: {
+  status: {
     justifyContent: 'center',
+    date: {
+      textTransform: 'uppercase',
+    },
   },
-  item__details: {
+  status__details: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  item__title: {
+  details__title: {
     marginRight: 10,
     fontFamily: 'Source Sans Pro',
     fontWeight: 'bold',
     fontSize: 24,
   },
-  item__situation: {
-    marginRight: 10,
-    fontFamily: 'Source Sans Pro',
-    fontWeight: 'bold',
-    fontSize: 24,
-  },
-  item__date: {
+  details__hours: {
     fontSize: 14,
   },
-  item__options: {
+  options: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     text: {
@@ -55,13 +52,13 @@ const styles = StyleSheet.create({
       color: '#000',
       marginRight: 5,
     },
+    activities: {
+      fontSize: 20,
+      marginRight: 10,
+      color: 'black',
+    },
   },
-  options__activities: {
-    fontSize: 20,
-    marginRight: 10,
-    color: 'black',
-  },
-  item_description: {
+  description: {
     color: '#ACACAC',
     fontSize: 13,
     marginTop: 5,

@@ -5,40 +5,43 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 
-// https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json"grinning"
-function ItemStatus({statusText, statusTitle, statusEmoji, color}) {
+function ItemStatus({
+  statusText,
+  statusTitle,
+  statusEmoji,
+  color,
+  date,
+  hours,
+  activities,
+}) {
+  // let [activitiesOne, activitiesTwo, activitiesThree] = activities;
+  console.warn(Array.from(activities));
   return (
-    <View style={styles.item}>
-      <View style={styles.item__header}>
-        <Image style={styles.item__emoticon} source={statusEmoji} />
-        <View style={styles.item__status}>
-          <Text>HOJE, 23 DE JANEIRO</Text>
-          <View style={styles.item__details}>
-            <Text style={[styles.item__title, {color: color}]}>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Image style={styles.emoticon} source={statusEmoji} />
+        <View style={styles.status}>
+          <Text style={styles.status.date}>{date}</Text>
+          <View style={styles.status__details}>
+            <Text style={[styles.details__title, {color: color}]}>
               {statusTitle}
             </Text>
-            <Text style={styles.item__date}>08:35</Text>
+            <Text style={styles.details__hours}>{hours}</Text>
           </View>
         </View>
       </View>
-      <View style={styles.item__options}>
-        <CommunityIcons
-          style={styles.options__activities}
-          name="party-popper"
-        />
-        <Text style={styles.item__options.text}>festa</Text>
+      <View style={styles.options}>
+        <CommunityIcons style={styles.options.activities} name="party-popper" />
+        <Text style={styles.options.text}>{}</Text>
         <Entypo name="dot-single" color="black" size={20} />
-        <Icon style={styles.options__activities} name="sports-basketball" />
-        <Text style={styles.item__options.text}>esporte</Text>
+        <Icon style={styles.options.activities} name="sports-basketball" />
+        <Text style={styles.options.text}>{}</Text>
         <Entypo name="dot-single" color="black" size={20} />
-        <CommunityIcons style={styles.options__activities} name="car-side" />
-        <Text style={styles.item__options.text}>passeio</Text>
+        <CommunityIcons style={styles.options.activities} name="car-side" />
+        <Text style={styles.options.text}>{}</Text>
       </View>
       <View>
-        <Text
-          style={styles.item_description}
-          numberOfLines={1}
-          ellipsizeMode="tail">
+        <Text style={styles.description} numberOfLines={1} ellipsizeMode="tail">
           {statusText}
         </Text>
       </View>
