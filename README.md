@@ -6,14 +6,14 @@ Este projeto foi criado para aplicação no primeiro desafio do programa de est�
 
 ## Protótipo
 
-O protótipo foi criado na ferramenta Figma. Se desejar pode encontrá-lo no link a seguir: <a href="https://www.figma.com/file/ESgzjPoyLTn15hi8Io6iVI/1%C2%AA-Sprint?node-id=1%3A336">https://www.figma.com/...</a>
+O protótipo foi criado na ferramenta Figma. Se desejar pode encontrá-lo no link a seguir:<br> <a href="https://www.figma.com/file/ESgzjPoyLTn15hi8Io6iVI/1%C2%AA-Sprint?node-id=1%3A336">Protótipo My Day App</a>
 
 ## Pré-requisitos
 
 Para iniciar o projeto será nescessário ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/) e [JDK](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html). Além disto é bom ter um editor para trabalhar com o código como o [VSCode](https://code.visualstudio.com/).
 
-Para maiores detalhes de como preparar sua máquina para testar a aplicação, segue uma recomendação de instalação: https://react-native.rocketseat.dev/
+Para maiores detalhes de como preparar sua máquina para testar a aplicação, segue uma recomendação de instalação:<br> https://react-native.rocketseat.dev/
 
 ## Executando
 
