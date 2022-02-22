@@ -1,23 +1,53 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import Entypo from 'react-native-vector-icons/Entypo';
 import styles from './styles';
+import ItemStatus from '../../components/ItemStatus';
+import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
 
-const Home = () => {
+import DataList from '../../mocks/statusList';
+import DataItem from '../../mocks/statusItem';
+
+function Home({navigation}) {
+  // const [dayList, setDayList] = React.useState([]);
+  const renderItem = ({
+    item: {image, date, hours, title, color, activities, text, id},
+  }) => {
+    return (
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => {
+          DataItem.image = image;
+          DataItem.date = date;
+          DataItem.hours = hours;
+          DataItem.title = title;
+          DataItem.color = color;
+          DataItem.activities = activities;
+          DataItem.text = text;
+          DataItem.id = id;
+          navigation.navigate('Status');
+        }}>
+        <ItemStatus
+          statusEmoji={image}
+          statusText={text}
+          statusTitle={title}
+          color={color}
+          activities={activities}
+          hours={hours}
+          date={date}
+        />
+      </TouchableOpacity>
+    );
+  };
+
   return (
-    <View style={styles.container}>
-      <Entypo
-        style={styles.nothingImage}
-        name="emoji-neutral"
-        color="#ACACAC"
-        size={48}
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        contentContainerStyle={{paddingBottom: 25}}
+        data={DataList}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
       />
-      <Text style={styles.text}>
-        Você ainda não tem nenhum registro diário. Para começar, toque no ícone
-        de adicionar na tela.
-      </Text>
-    </View>
+    </SafeAreaView>
   );
-};
+}
 
 export default Home;

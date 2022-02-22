@@ -1,23 +1,14 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, StatusBar} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#F1F1F1',
+    backgroundColor: '#E5E5E5',
   },
-  nothingImage: {
-    marginTop: 130,
-  },
-  text: {
-    marginTop: 32,
-    width: 258,
-    textAlign: 'center',
-    fontFamily: 'Source Sans Pro',
-    fontSize: 16,
-    lineHeight: 23,
-    letterSpacing: -0.3,
-    color: '#ACACAC',
+
+  scrollView: {
+    backgroundColor: '#E5E5E5',
+    flexGrow: 1,
   },
 });
 

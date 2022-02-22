@@ -1,19 +1,20 @@
 import React from 'react';
 import AddStackScreen from './AddStackScreen.routes';
 import Settings from '../pages/Settings';
+import Add from '../pages/Add';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import ButtonAdd from '../components/ButtonAdd';
+import HomeEmpty from '../pages/HomeEmpty';
 import Home from '../pages/Home';
 import ButtonSettings from '../components/ButtonSettings';
 import ButtonHome from '../components/ButtonHome';
 
 const Tab = createBottomTabNavigator();
 
-function HomeStaackSreen() {
+function HomeTabScreen() {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomeEmpty"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#ffffff',
@@ -25,8 +26,8 @@ function HomeStaackSreen() {
         },
       }}>
       <Tab.Screen
-        name="AddStackScreen"
-        component={AddStackScreen}
+        name="HomeEmpty"
+        component={HomeEmpty}
         options={{
           tabBarIcon: ({color, focused}) => (
             <ButtonHome focused={focused} name="home" color={color} />
@@ -34,11 +35,17 @@ function HomeStaackSreen() {
         }}
       />
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="AddStackScreen"
+        component={AddStackScreen}
         options={{
-          tabBarIcon: ({color}) => <ButtonAdd color={color} />,
+          tabBarIcon: ({color}) => <ButtonAdd isVisible={true} color={color} />,
         }}
+        listeners={({navigation}) => ({
+          tabPress: e => {
+            e.preventDefault();
+            navigation.navigate('Add');
+          },
+        })}
       />
       <Tab.Screen
         name="Settings"
@@ -53,4 +60,4 @@ function HomeStaackSreen() {
   );
 }
 
-export default HomeStaackSreen;
+export default HomeTabScreen;

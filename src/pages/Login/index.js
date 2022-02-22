@@ -20,7 +20,7 @@ function Login({navigation}) {
         onPress={() =>
           navigation.reset({
             index: 0,
-            routes: [{name: 'HomeStackScreen'}],
+            routes: [{name: 'HomeTabScreen'}],
           })
         }>
         <Text style={styles.buttonText}>Entrar</Text>
