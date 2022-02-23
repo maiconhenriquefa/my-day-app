@@ -1,12 +1,12 @@
 import axios from 'axios';
 import {item} from './ApiCollection.json';
 
-const urlDefault = axios.create({
+const urlDefaultUsers = axios.create({
   baseURL: 'https://shrouded-shelf-01513.herokuapp.com/daily_entries',
 });
 
 export function getUsers() {
-  urlDefault
+  urlDefaultUsers
     .get('?username=maicon')
     .then(response => {
       const data = response.data;
@@ -16,7 +16,7 @@ export function getUsers() {
 }
 
 export function addNewUser(newUser) {
-  urlDefault
+  urlDefaultUsers
     .post('', newUser)
     .then(response => {
       const data = response.data;
@@ -26,7 +26,7 @@ export function addNewUser(newUser) {
 }
 
 export function updateUser(user, id) {
-  urlDefault
+  urlDefaultUsers
     .put(`/${id}`, user)
     .then(response => {
       const data = response.data;
@@ -38,7 +38,7 @@ export function updateUser(user, id) {
 export function deleteUser(...id) {
   if (id.length > 1) {
     id.map(itemId =>
-      urlDefault
+      urlDefaultUsers
         .delete(`/${itemId}`)
         .then(response => {
           const data = response.data;
@@ -47,7 +47,7 @@ export function deleteUser(...id) {
         .catch(error => console.log(error)),
     );
   } else {
-    urlDefault
+    urlDefaultUsers
       .delete(`/${id}`)
       .then(response => {
         const data = response.data;

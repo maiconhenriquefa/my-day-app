@@ -15,28 +15,10 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import ItemEmoticon from '../../components/ItemEmoticon';
 import ItemActivities from '../../components/ItemActivities';
 import {getUsers, addNewUser, updateUser, deleteUser} from '../../data/Users';
+import {getActivities} from '../../data/Activities';
 
-const newUser = {
-  description: 'Hoje foi maneiro, testando update',
-  mood: 'happy',
-  created_at: '2022-02-23T19:57:17.188Z',
-  updated_at: '2022-02-23T19:57:17.188Z',
-  username: 'maicon',
-  activities: [
-    {
-      id: 1,
-      name: 'sports',
-    },
-    {
-      id: 2,
-      name: 'games',
-    },
-    {
-      id: 3,
-      name: 'cooking',
-    },
-  ],
-};
+const activities = getActivities();
+console.warn(activities);
 
 const Add = ({navigation}) => {
   return (
@@ -68,17 +50,11 @@ const Add = ({navigation}) => {
           <ItemEmoticon />
           <ItemEmoticon />
         </View>
-        <View style={styles.activities}>
-          <ItemActivities />
-          <ItemActivities />
-          <ItemActivities />
-          <ItemActivities />
-          <ItemActivities />
-          <ItemActivities />
-          <ItemActivities />
-          <ItemActivities />
-          <ItemActivities />
-        </View>
+        {/* <View style={styles.activities}>
+          {activities.map(({id, name}) => {
+            <ItemActivities key={id} name={name} />;
+          })}
+        </View> */}
         <TextInput
           style={styles.input}
           placeholder="Escreva aqui o que aconteceu hoje..."
