@@ -12,9 +12,8 @@ function AddStackSreen() {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="HomeEmpty" component={HomeEmpty} />
-      <Stack.Screen name="Add" component={Add} />
       <Stack.Screen name="Status" component={Status} />
+      <Stack.Screen name="Add" component={Add} />
     </Stack.Navigator>
   );
 }

@@ -38,13 +38,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  emoticons__item: {
-    alignItems: 'center',
-  },
-  emoticons__img: {
-    width: 43,
-    height: 43,
-  },
   activities: {
     Height: 300,
     borderWidth: 1,
@@ -52,21 +45,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  activities__item: {
-    margin: 20,
-    alignItems: 'center',
-  },
-  activities__icon: {
-    fontSize: 35,
-  },
-  box__icon: {
-    padding: 11,
-    borderWidth: 1,
-    borderColor: '#000',
-    borderRadius: 70,
     alignItems: 'center',
     justifyContent: 'center',
   },

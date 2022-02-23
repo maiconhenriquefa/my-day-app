@@ -8,6 +8,7 @@ import HomeEmpty from '../pages/HomeEmpty';
 import Home from '../pages/Home';
 import ButtonSettings from '../components/ButtonSettings';
 import ButtonHome from '../components/ButtonHome';
+import {Modal} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,12 +39,12 @@ function HomeTabScreen() {
         name="AddStackScreen"
         component={AddStackScreen}
         options={{
-          tabBarIcon: ({color}) => <ButtonAdd isVisible={true} color={color} />,
+          tabBarIcon: ({color}) => <ButtonAdd color={color} />,
         }}
         listeners={({navigation}) => ({
           tabPress: e => {
             e.preventDefault();
-            navigation.navigate('Add');
+            navigation.navigate({name: 'Add', params: {isVisible: true}});
           },
         })}
       />

@@ -12,20 +12,17 @@ import styles from './styles';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import CommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import api from '../../data/api';
+import ItemEmoticon from '../../components/ItemEmoticon';
+import ItemActivities from '../../components/ItemActivities';
 
-const Add = ({navigation}) => {
-  // const [isVisible, setIsVisible] = React.useState(true);
+api
+  .get('daily_entries?username=joaopedro')
+  .then(response => console.warn(response.data[0].mood));
 
+const Add = ({navigation, route}) => {
   return (
-    <Modal
-      animationType={'slide'}
-      statusBarTranslucentprop={true}
-      // transparent={false}
-      // visible={isVisible}
-      // onRequestClose={() => {
-      //   setIsVisible(false);
-      // }}>
-    >
+    <Modal animationType={'slide'} statusBarTranslucentprop={true}>
       <ScrollView
         contentContainerStyle={{alignItems: 'center'}}
         style={styles.container}>
@@ -46,97 +43,23 @@ const Add = ({navigation}) => {
           </View>
         </View>
         <View style={styles.emoticons}>
-          <View style={styles.emoticons__item}>
-            <Image
-              style={styles.emoticons__img}
-              source={require('../../assets/happy.png')}
-            />
-            <Text>Bem</Text>
-          </View>
-          <View style={styles.emoticons__item}>
-            <Image
-              style={styles.emoticons__img}
-              source={require('../../assets/happy.png')}
-            />
-            <Text>Bem</Text>
-          </View>
-          <View style={styles.emoticons__item}>
-            <Image
-              style={styles.emoticons__img}
-              source={require('../../assets/happy.png')}
-            />
-            <Text>Bem</Text>
-          </View>
-          <View style={styles.emoticons__item}>
-            <Image
-              style={styles.emoticons__img}
-              source={require('../../assets/happy.png')}
-            />
-            <Text>Bem</Text>
-          </View>
-          <View style={styles.emoticons__item}>
-            <Image
-              style={styles.emoticons__img}
-              source={require('../../assets/happy.png')}
-            />
-            <Text>Bem</Text>
-          </View>
+          <ItemEmoticon />
+          <ItemEmoticon />
+          <ItemEmoticon />
+          <ItemEmoticon />
+          <ItemEmoticon />
+          <ItemEmoticon />
         </View>
         <View style={styles.activities}>
-          <View style={styles.activities__item}>
-            <View style={styles.box__icon}>
-              <CommunityIcons name="car" style={styles.activities__icon} />
-            </View>
-            <Text>festa</Text>
-          </View>
-          <View style={styles.activities__item}>
-            <View style={styles.box__icon}>
-              <CommunityIcons name="car" style={styles.activities__icon} />
-            </View>
-            <Text>festa</Text>
-          </View>
-          <View style={styles.activities__item}>
-            <View style={styles.box__icon}>
-              <CommunityIcons name="car" style={styles.activities__icon} />
-            </View>
-            <Text>festa</Text>
-          </View>
-          <View style={styles.activities__item}>
-            <View style={styles.box__icon}>
-              <CommunityIcons name="car" style={styles.activities__icon} />
-            </View>
-            <Text>festa</Text>
-          </View>
-          <View style={styles.activities__item}>
-            <View style={styles.box__icon}>
-              <CommunityIcons name="car" style={styles.activities__icon} />
-            </View>
-            <Text>festa</Text>
-          </View>
-          <View style={styles.activities__item}>
-            <View style={styles.box__icon}>
-              <CommunityIcons name="car" style={styles.activities__icon} />
-            </View>
-            <Text>festa</Text>
-          </View>
-          <View style={styles.activities__item}>
-            <View style={styles.box__icon}>
-              <CommunityIcons name="car" style={styles.activities__icon} />
-            </View>
-            <Text>festa</Text>
-          </View>
-          <View style={styles.activities__item}>
-            <View style={styles.box__icon}>
-              <CommunityIcons name="car" style={styles.activities__icon} />
-            </View>
-            <Text>festa</Text>
-          </View>
-          <View style={styles.activities__item}>
-            <View style={styles.box__icon}>
-              <CommunityIcons name="car" style={styles.activities__icon} />
-            </View>
-            <Text>festa</Text>
-          </View>
+          <ItemActivities />
+          <ItemActivities />
+          <ItemActivities />
+          <ItemActivities />
+          <ItemActivities />
+          <ItemActivities />
+          <ItemActivities />
+          <ItemActivities />
+          <ItemActivities />
         </View>
         <TextInput
           style={styles.input}
