@@ -48,14 +48,14 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "https://shrouded-shelf-01513.herokuapp.com/daily_entries?username=joaopedro",
+          "raw": "https://shrouded-shelf-01513.herokuapp.com/daily_entries?username=maicon",
           "protocol": "https",
           "host": ["shrouded-shelf-01513", "herokuapp", "com"],
           "path": ["daily_entries"],
           "query": [
             {
               "key": "username",
-              "value": "joaopedro"
+              "value": "maicon"
             }
           ]
         }

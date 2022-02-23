@@ -12,15 +12,33 @@ import styles from './styles';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import CommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import api from '../../data/api';
 import ItemEmoticon from '../../components/ItemEmoticon';
 import ItemActivities from '../../components/ItemActivities';
+import {getUsers, addNewUser, updateUser, deleteUser} from '../../data/Users';
 
-api
-  .get('daily_entries?username=joaopedro')
-  .then(response => console.warn(response.data[0].mood));
+const newUser = {
+  description: 'Hoje foi maneiro, testando update',
+  mood: 'happy',
+  created_at: '2022-02-23T19:57:17.188Z',
+  updated_at: '2022-02-23T19:57:17.188Z',
+  username: 'maicon',
+  activities: [
+    {
+      id: 1,
+      name: 'sports',
+    },
+    {
+      id: 2,
+      name: 'games',
+    },
+    {
+      id: 3,
+      name: 'cooking',
+    },
+  ],
+};
 
-const Add = ({navigation, route}) => {
+const Add = ({navigation}) => {
   return (
     <Modal animationType={'slide'} statusBarTranslucentprop={true}>
       <ScrollView

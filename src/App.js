@@ -12,7 +12,6 @@ import HomeTabScreen from './routes/HomeTabScreen.routes';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Add from './pages/Add';
-import Home from './pages/Home';
 
 const Stack = createStackNavigator();
 
