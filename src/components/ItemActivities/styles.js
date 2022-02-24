@@ -16,6 +16,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  activities__text: {
+    fontSize: 10,
+    lineHeight: 18,
+    fontWeight: '600',
+    color: '#000',
+  },
 });
 
 export default styles;
