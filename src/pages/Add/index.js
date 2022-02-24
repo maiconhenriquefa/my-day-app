@@ -25,30 +25,30 @@ import {updateDaily, addNewDaily, deleteDaily} from '../../data/DailyEntries';
 const Add = ({navigation}) => {
   const {data} = Activities();
 
-  React.useEffect(() => {
-    const daily = {
-      id: 10,
-      description: 'Hoje foi maneiro, testando update',
-      mood: 'confused',
-      username: 'maicon',
-      activities: [
-        {
-          id: 1,
-          name: 'sports',
-        },
-        {
-          id: 2,
-          name: 'games',
-        },
-        {
-          id: 3,
-          name: 'cooking',
-        },
-      ],
-    };
+  // React.useEffect(() => {
+  //   const daily = {
+  //     id: 10,
+  //     description: 'Hoje foi maneiro, testando update',
+  //     mood: 'confused',
+  //     username: 'maicon',
+  //     activities: [
+  //       {
+  //         id: 1,
+  //         name: 'sports',
+  //       },
+  //       {
+  //         id: 2,
+  //         name: 'games',
+  //       },
+  //       {
+  //         id: 3,
+  //         name: 'cooking',
+  //       },
+  //     ],
+  //   };
 
-    addNewDaily(daily);
-  }, []);
+  //   addNewDaily(daily);
+  // }, []);
 
   return (
     data && (

@@ -32,7 +32,7 @@ function Status({navigation}) {
         </Text>
       </View>
       <View style={styles.options}>
-        <View style={styles.options__item}>
+        {/* <View style={styles.options__item}>
           <CommunityIcons
             name={Data.activities.activitieOne.icon}
             style={styles.item__icon}
@@ -58,7 +58,7 @@ function Status({navigation}) {
           <Text style={styles.item__text}>
             {Data.activities.activitieThree.name}
           </Text>
-        </View>
+        </View> */}
       </View>
       <View style={styles.description}>
         <Text style={styles.description.text}>{Data.text}</Text>

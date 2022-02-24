@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 function HomeTabScreen() {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="AddStackScreen"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#ffffff',
@@ -27,8 +27,8 @@ function HomeTabScreen() {
         },
       }}>
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="AddStackScreen"
+        component={AddStackScreen}
         options={{
           tabBarIcon: ({color, focused}) => (
             <ButtonHome focused={focused} name="home" color={color} />
@@ -36,8 +36,8 @@ function HomeTabScreen() {
         }}
       />
       <Tab.Screen
-        name="AddStackScreen"
-        component={AddStackScreen}
+        name="Home"
+        component={Home}
         options={{
           tabBarIcon: ({color}) => <ButtonAdd color={color} />,
         }}

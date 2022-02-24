@@ -1,7 +1,7 @@
 import React from 'react';
 import Status from '../pages/Status';
 import HomeEmpty from '../pages/HomeEmpty';
-import Add from '../pages/Add';
+import Home from '../pages/Home';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -12,8 +12,8 @@ function AddStackSreen() {
       screenOptions={{
         headerShown: false,
       }}>
+      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Status" component={Status} />
-      <Stack.Screen name="Add" component={Add} />
     </Stack.Navigator>
   );
 }

@@ -11,15 +11,14 @@ import {getDailys} from '../../data/DailyEntries';
 
 function Home({navigation}) {
   const [dailysList, setDailysList] = React.useState('');
-
   React.useEffect(() => {
     async function componentDidMount() {
       const dataDailys = await getDailys();
       setDailysList(dataDailys);
-      console.warn(getDailys());
+      // console.warn(getDailys());
     }
     componentDidMount();
-  }, []);
+  }, [dailysList]);
 
   const renderItem = ({
     item: {
