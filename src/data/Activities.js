@@ -1,15 +1,26 @@
 import axios from 'axios';
-import {item} from './ApiCollection.json';
+import React from 'react';
 
-const urlDefaultActivities = axios.create({
-  baseURL: 'https://shrouded-shelf-01513.herokuapp.com/activities',
-});
+const Activities = () => {
+  const [data, setData] = React.useState(null);
 
-export function getActivities() {
-  urlDefaultActivities
-    .get()
-    .then(response => {
-      const data = response.data;
-    })
-    .catch(error => console.log(error));
-}
+  const urlDefaultActivities = axios.create({
+    baseURL: 'https://shrouded-shelf-01513.herokuapp.com/activities',
+  });
+
+  async function getActivities() {
+    await urlDefaultActivities
+      .get()
+      .then(response => {
+        const dataValue = response.data;
+        setData(dataValue);
+      })
+      .catch(error => console.warn(error));
+  }
+  getActivities();
+  return {
+    data,
+  };
+};
+
+export default Activities;
