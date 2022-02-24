@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 function HomeTabScreen() {
   return (
     <Tab.Navigator
-      initialRouteName="HomeEmpty"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#ffffff',
@@ -27,8 +27,8 @@ function HomeTabScreen() {
         },
       }}>
       <Tab.Screen
-        name="HomeEmpty"
-        component={HomeEmpty}
+        name="Home"
+        component={Home}
         options={{
           tabBarIcon: ({color, focused}) => (
             <ButtonHome focused={focused} name="home" color={color} />

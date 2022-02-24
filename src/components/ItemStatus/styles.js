@@ -19,13 +19,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 10,
   },
-  emoticons: {
-    width: 306,
-    height: 71,
-    margin: 24,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  emoticon: {
+    width: 57,
+    height: 57,
+    marginRight: 20,
   },
   status: {
     justifyContent: 'center',

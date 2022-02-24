@@ -1,22 +1,23 @@
 import axios from 'axios';
 import {item} from './ApiCollection.json';
 
-const urlDefaultUsers = axios.create({
+const urlDefaultDailys = axios.create({
   baseURL: 'https://shrouded-shelf-01513.herokuapp.com/daily_entries',
 });
 
-export function getUsers() {
-  urlDefaultUsers
+export async function getDailys() {
+  let data;
+  await urlDefaultDailys
     .get('?username=maicon')
     .then(response => {
-      const data = response.data;
-      console.warn(data);
+      data = response.data;
     })
     .catch(error => console.log(error));
+  return data;
 }
 
-export function addNewUser(newUser) {
-  urlDefaultUsers
+export function addNewDaily(newUser) {
+  urlDefaultDailys
     .post('', newUser)
     .then(response => {
       const data = response.data;
@@ -25,9 +26,9 @@ export function addNewUser(newUser) {
     .catch(error => console.log(error));
 }
 
-export function updateUser(user, id) {
-  urlDefaultUsers
-    .put(`/${id}`, user)
+export function updateDaily(daily, id) {
+  urlDefaultDailys
+    .put(`/${id}`, daily)
     .then(response => {
       const data = response.data;
       console.warn(data);
@@ -35,10 +36,10 @@ export function updateUser(user, id) {
     .catch(error => console.error(error));
 }
 
-export function deleteUser(...id) {
+export function deleteDaily(...id) {
   if (id.length > 1) {
     id.map(itemId =>
-      urlDefaultUsers
+      urlDefaultDailys
         .delete(`/${itemId}`)
         .then(response => {
           const data = response.data;
@@ -47,7 +48,7 @@ export function deleteUser(...id) {
         .catch(error => console.log(error)),
     );
   } else {
-    urlDefaultUsers
+    urlDefaultDailys
       .delete(`/${id}`)
       .then(response => {
         const data = response.data;
