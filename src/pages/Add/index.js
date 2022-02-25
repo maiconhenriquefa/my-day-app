@@ -23,35 +23,24 @@ import sleeping from '../../assets/sleeping.png';
 import {updateDaily, addNewDaily, deleteDaily} from '../../data/DailyEntries';
 
 const Add = ({navigation}) => {
-  const {data} = Activities();
+  const {dataActivities} = Activities();
 
-  // React.useEffect(() => {
-  //   const daily = {
-  //     id: 10,
-  //     description: 'Hoje foi maneiro, testando update',
-  //     mood: 'confused',
-  //     username: 'maicon',
-  //     activities: [
-  //       {
-  //         id: 1,
-  //         name: 'sports',
-  //       },
-  //       {
-  //         id: 2,
-  //         name: 'games',
-  //       },
-  //       {
-  //         id: 3,
-  //         name: 'cooking',
-  //       },
-  //     ],
-  //   };
+  React.useEffect(() => {
+    const dailyEntry = {
+      mood: 'sad',
+      activity_ids: [1, 3],
+      description: 'testando',
+      username: 'maicon',
+    };
+    const formData = new FormData();
+    formData.append('daily_entry', JSON.stringify(dailyEntry));
+    console.warn(JSON.stringify(dailyEntry));
 
-  //   addNewDaily(daily);
-  // }, []);
+    addNewDaily(JSON.stringify(dailyEntry));
+  }, []);
 
   return (
-    data && (
+    dataActivities && (
       <Modal animationType={'slide'} statusBarTranslucentprop={true}>
         <ScrollView
           contentContainerStyle={{alignItems: 'center'}}
@@ -80,7 +69,7 @@ const Add = ({navigation}) => {
             <ItemEmoticon text={'Mal'} color={'purple'} emoticon={nervous} />
           </View>
           <View style={styles.activities}>
-            {data.map(({id, name}) => {
+            {dataActivities.map(({id, name}) => {
               return <ItemActivities key={id} name={name} />;
             })}
           </View>

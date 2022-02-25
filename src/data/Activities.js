@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 const Activities = () => {
-  const [data, setData] = React.useState(null);
+  const [dataActivities, setDataActivities] = React.useState(null);
 
   const urlDefaultActivities = axios.create({
     baseURL: 'https://shrouded-shelf-01513.herokuapp.com/activities',
@@ -12,14 +12,14 @@ const Activities = () => {
     await urlDefaultActivities
       .get()
       .then(response => {
-        setData(response.data);
+        setDataActivities(response.data);
       })
-      .catch(error => console.warn(error));
+      .catch(error => console.warn(error.message));
   }
   getActivities();
 
   return {
-    data,
+    dataActivities,
   };
 };
 

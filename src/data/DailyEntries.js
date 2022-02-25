@@ -6,14 +6,14 @@ const urlDefaultDailys = axios.create({
 });
 
 export async function getDailys() {
-  let data;
+  let dataDailys;
   await urlDefaultDailys
     .get('?username=maicon')
     .then(response => {
-      data = response.data;
+      dataDailys = response.data;
     })
-    .catch(error => console.log(error));
-  return data;
+    .catch(error => console.warn(error));
+  return {dataDailys};
 }
 
 export function addNewDaily(newUser) {
@@ -23,7 +23,7 @@ export function addNewDaily(newUser) {
       const data = response.data;
       console.warn(data);
     })
-    .catch(error => console.log(error));
+    .catch(error => console.warn(error));
 }
 
 export function updateDaily(daily, id) {
@@ -33,7 +33,7 @@ export function updateDaily(daily, id) {
       const data = response.data;
       console.warn(data);
     })
-    .catch(error => console.error(error));
+    .catch(error => console.warn(error));
 }
 
 export function deleteDaily(...id) {
@@ -45,7 +45,7 @@ export function deleteDaily(...id) {
           const data = response.data;
           console.warn(data);
         })
-        .catch(error => console.log(error)),
+        .catch(error => console.warn(error)),
     );
   } else {
     urlDefaultDailys
@@ -54,6 +54,6 @@ export function deleteDaily(...id) {
         const data = response.data;
         console.warn(data);
       })
-      .catch(error => console.log(error));
+      .catch(error => console.warn(error));
   }
 }

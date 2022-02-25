@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text} from 'react-native';
 import styles from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const listNamesActivities = {
+export const listNamesActivities = {
   sports: 'esportes',
   cooking: 'cozinhar',
   games: 'jogos',
@@ -15,7 +15,7 @@ const listNamesActivities = {
   movies: 'filmes e séries',
 };
 
-const listIconsActivities = {
+export const listIconsActivities = {
   sports: 'directions-run',
   cooking: 'local-dining',
   games: 'sports-esports',

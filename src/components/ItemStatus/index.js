@@ -1,10 +1,13 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import CommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import ItemEmoticon from '../ItemEmoticon';
+import Activities from '../../data/Activities';
+import {listIconsActivities} from '../ItemActivities';
 
 function ItemStatus({
   statusText,
@@ -47,6 +50,17 @@ function ItemStatus({
       emoticon = require('../../assets/happy.png');
       color = 'Bem';
   }
+
+  const [listActivities, setListActivities] = React.useState([]);
+
+  React.useEffect(() => {
+    async function componentDidMount() {
+      const {dataActivities} = await Activities();
+      setListActivities(dataActivities);
+    }
+    componentDidMount();
+  }, [setListActivities]);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -59,15 +73,18 @@ function ItemStatus({
           </View>
         </View>
       </View>
+
       <View style={styles.options}>
-        <CommunityIcons style={styles.options.activities} name={activities} />
-        <Text style={styles.options.text}>{activities}</Text>
-        <Entypo name="dot-single" color="black" size={20} />
-        <Icon style={styles.options.activities} name={activities} />
-        <Text style={styles.options.text}>{activities}</Text>
-        <Entypo name="dot-single" color="black" size={20} />
-        <CommunityIcons style={styles.options.activities} name={activities} />
-        <Text style={styles.options.text}>{activities}</Text>
+        {/* {activities.map(({id, name}) => {
+          return (
+            <>
+              <MaterialIcons key={id} name={listIconsActivities[name]} />
+              <Text style={styles.options.text}>{listIconsActivities[id]}</Text>
+            </>
+          );
+        })} */}
+        {/* <CommunityIcons style={styles.options.activities} name={activities} />
+        <Text style={styles.options.text}>{data.id}</Text> */}
       </View>
       <View>
         <Text style={styles.description} numberOfLines={1} ellipsizeMode="tail">
