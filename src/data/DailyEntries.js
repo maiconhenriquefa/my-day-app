@@ -12,12 +12,14 @@ export async function getDailys() {
     .then(response => {
       dataDailys = response.data;
     })
-    .catch(error => console.warn(error));
+    .catch(error => {
+      throw error;
+    });
   return {dataDailys};
 }
 
-export function addNewDaily(newUser) {
-  urlDefaultDailys
+export async function addNewDaily(newUser) {
+  await urlDefaultDailys
     .post('', newUser)
     .then(response => {
       const data = response.data;
@@ -26,8 +28,8 @@ export function addNewDaily(newUser) {
     .catch(error => console.warn(error));
 }
 
-export function updateDaily(daily, id) {
-  urlDefaultDailys
+export async function updateDaily(daily, id) {
+  await urlDefaultDailys
     .put(`/${id}`, daily)
     .then(response => {
       const data = response.data;

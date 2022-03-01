@@ -1,33 +1,28 @@
 import React from 'react';
 import styles from './styles';
 import ItemStatus from '../../components/ItemStatus';
-import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
+import {SafeAreaView, TouchableOpacity, FlatList, Text} from 'react-native';
 
 import DataItem from '../../mocks/statusItem';
 import {getDailys} from '../../data/DailyEntries';
 
-// const emoticonListImg = [happy, , mal, triste, confused, nervous];
-
 function Home({navigation}) {
-  const [dailysList, setDailysList] = React.useState('');
+  const [dailysList, setDailysList] = React.useState(null);
+
   React.useEffect(() => {
     async function componentDidMount() {
-      const {dataDailys} = await getDailys();
-      setDailysList(dataDailys);
+      try {
+        const {dataDailys} = await getDailys();
+        setDailysList(dataDailys);
+      } catch (error) {
+        console.warn(error);
+      }
     }
     componentDidMount();
   }, [dailysList]);
 
   const renderItem = ({
-    item: {
-      id,
-      mood,
-      created_at,
-      updated_at,
-      username,
-      short_description,
-      activities,
-    },
+    item: {id, mood, created_at, short_description, activities},
   }) => {
     const date = new Date(created_at);
     const hours = date.getHours();
@@ -93,12 +88,16 @@ function Home({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        contentContainerStyle={{paddingBottom: 25}}
-        data={dailysList}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
+      {dailysList ? (
+        <FlatList
+          contentContainerStyle={{paddingBottom: 25}}
+          data={dailysList}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+        />
+      ) : (
+        <Text style={styles.loading}>carregando</Text>
+      )}
     </SafeAreaView>
   );
 }

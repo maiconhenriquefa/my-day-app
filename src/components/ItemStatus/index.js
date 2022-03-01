@@ -1,13 +1,12 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
-import CommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import ItemEmoticon from '../ItemEmoticon';
+import Entypo from 'react-native-vector-icons/Entypo';
 import Activities from '../../data/Activities';
 import {listIconsActivities} from '../ItemActivities';
+import {listNamesActivities} from '../ItemActivities';
 
 function ItemStatus({
   statusText,
@@ -52,7 +51,6 @@ function ItemStatus({
   }
 
   const [listActivities, setListActivities] = React.useState([]);
-
   React.useEffect(() => {
     async function componentDidMount() {
       const {dataActivities} = await Activities();
@@ -75,16 +73,21 @@ function ItemStatus({
       </View>
 
       <View style={styles.options}>
-        {/* {activities.map(({id, name}) => {
+        {activities.map(({id, name}) => {
           return (
-            <>
-              <MaterialIcons key={id} name={listIconsActivities[name]} />
-              <Text style={styles.options.text}>{listIconsActivities[id]}</Text>
-            </>
+            <View style={styles.options}>
+              <MaterialIcons
+                style={styles.options.activities}
+                key={id}
+                name={listIconsActivities[name]}
+              />
+              <Text style={styles.options.text}>
+                {listNamesActivities[name]}
+              </Text>
+              <Entypo name="dot-single" color="black" size={20} />
+            </View>
           );
-        })} */}
-        {/* <CommunityIcons style={styles.options.activities} name={activities} />
-        <Text style={styles.options.text}>{data.id}</Text> */}
+        })}
       </View>
       <View>
         <Text style={styles.description} numberOfLines={1} ellipsizeMode="tail">

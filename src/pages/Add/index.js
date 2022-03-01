@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View,
   Text,
-  Image,
   TextInput,
   TouchableOpacity,
   ScrollView,
@@ -10,7 +9,6 @@ import {
 } from 'react-native';
 import styles from './styles';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import CommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ItemEmoticon from '../../components/ItemEmoticon';
 import ItemActivities from '../../components/ItemActivities';
@@ -22,22 +20,28 @@ import sad from '../../assets/sad.png';
 import sleeping from '../../assets/sleeping.png';
 import {updateDaily, addNewDaily, deleteDaily} from '../../data/DailyEntries';
 
+const emoticonList = [
+  {text: 'bem', color: 'red', emoticon: happy},
+  {text: 'confuso', color: 'blue', emoticon: confused},
+  {text: 'triste', color: 'green', emoticon: sad},
+  {text: 'sono', color: 'orange', emoticon: sleeping},
+  {text: 'mal', color: 'purple', emoticon: nervous},
+];
+
 const Add = ({navigation}) => {
+  const [dataSaved, setdataSaved] = React.useState({
+    id: 0,
+    mood: '',
+    activity_ids: [1, 2],
+    description: '',
+    username: 'maicon',
+  });
   const {dataActivities} = Activities();
 
-  React.useEffect(() => {
-    const dailyEntry = {
-      mood: 'sad',
-      activity_ids: [1, 3],
-      description: 'testando',
-      username: 'maicon',
-    };
-    const formData = new FormData();
-    formData.append('daily_entry', JSON.stringify(dailyEntry));
-    console.warn(JSON.stringify(dailyEntry));
-
-    addNewDaily(JSON.stringify(dailyEntry));
-  }, []);
+  function OnChangeSaved() {
+    navigation.navigate('Home');
+    addNewDaily(dataSaved);
+  }
 
   return (
     dataActivities && (
@@ -62,22 +66,42 @@ const Add = ({navigation}) => {
             </View>
           </View>
           <View style={styles.emoticons}>
-            <ItemEmoticon text={'Bem'} color={'red'} emoticon={happy} />
-            <ItemEmoticon text={'Confuso'} color={'blue'} emoticon={confused} />
-            <ItemEmoticon text={'Triste'} color={'green'} emoticon={sad} />
-            <ItemEmoticon text={'Sono'} color={'orange'} emoticon={sleeping} />
-            <ItemEmoticon text={'Mal'} color={'purple'} emoticon={nervous} />
+            {emoticonList.map(({text, emoticon, color}) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    setdataSaved({
+                      ...dataSaved,
+                      mood: emoticon,
+                    });
+                  }}>
+                  <ItemEmoticon
+                    key={emoticon}
+                    text={text}
+                    color={color}
+                    emoticon={emoticon}
+                  />
+                </TouchableOpacity>
+              );
+            })}
           </View>
           <View style={styles.activities}>
             {dataActivities.map(({id, name}) => {
-              return <ItemActivities key={id} name={name} />;
+              return <ItemActivities key={name} name={name} />;
             })}
           </View>
           <TextInput
             style={styles.input}
             placeholder="Escreva aqui o que aconteceu hoje..."
+            onChangeText={description =>
+              setdataSaved({...dataSaved, description: description})
+            }
           />
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              OnChangeSaved();
+            }}>
             <Text style={styles.button__text}>Salvar</Text>
           </TouchableOpacity>
         </ScrollView>

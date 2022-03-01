@@ -33,31 +33,16 @@ function Status({navigation}) {
       </View>
       <View style={styles.options}>
         {/* <View style={styles.options__item}>
-          <CommunityIcons
-            name={Data.activities.activitieOne.icon}
-            style={styles.item__icon}
-          />
-          <Text style={styles.item__text}>
-            {Data.activities.activitieOne.name}
-          </Text>
+          <CommunityIcons name={Data.activities[0]} style={styles.item__icon} />
+          <Text style={styles.item__text}>{Data.activities[0]}</Text>
         </View>
         <View style={styles.options__item}>
-          <Icon
-            name={Data.activities.activitieTwo.icon}
-            style={styles.item__icon}
-          />
-          <Text style={styles.item__text}>
-            {Data.activities.activitieTwo.name}
-          </Text>
+          <Icon name={Data.activities[1]} style={styles.item__icon} />
+          <Text style={styles.item__text}>{Data.activities[1]}</Text>
         </View>
         <View style={styles.options__item}>
-          <CommunityIcons
-            name={Data.activities.activitieThree.icon}
-            style={styles.item__icon}
-          />
-          <Text style={styles.item__text}>
-            {Data.activities.activitieThree.name}
-          </Text>
+          <CommunityIcons name={Data.activities[2]} style={styles.item__icon} />
+          <Text style={styles.item__text}>{Data.activities[2]}</Text>
         </View> */}
       </View>
       <View style={styles.description}>

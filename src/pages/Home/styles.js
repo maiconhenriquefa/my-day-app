@@ -4,11 +4,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#E5E5E5',
+    flexDirection: 'row',
   },
-
-  scrollView: {
-    backgroundColor: '#E5E5E5',
-    flexGrow: 1,
+  loading: {
+    flex: 1,
+    textAlign: 'center',
+    fontSize: 28,
+    alignSelf: 'center',
+    textTransform: 'uppercase',
   },
 });
 
