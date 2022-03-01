@@ -96,7 +96,7 @@ function Home({navigation}) {
           keyExtractor={item => item.id}
         />
       ) : (
-        <Text style={styles.loading}>carregando</Text>
+        <Text style={styles.loading}>carregando...</Text>
       )}
     </SafeAreaView>
   );
