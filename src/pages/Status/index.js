@@ -11,7 +11,42 @@ import {listNamesActivities} from '../../components/ItemActivities';
 
 function Status({navigation, route}) {
   const dataDailys = route.params;
-  console.warn(dataDailys.activities);
+
+  let emoticon;
+  let title;
+  let color;
+  switch (dataDailys.image) {
+    case 'happy':
+      emoticon = require('../../assets/happy.png');
+      title = 'Bem';
+      color = 'red';
+      break;
+    case 'nervous':
+      emoticon = require('../../assets/nervous.png');
+      title = 'Mal';
+      color = 'blue';
+      break;
+    case 'sad':
+      emoticon = require('../../assets/sad.png');
+      title = 'Triste';
+      color = 'green';
+      break;
+    case 'confused':
+      emoticon = require('../../assets/confused.png');
+      title = 'Confuso';
+      color = 'orange';
+      break;
+    case 'sleeping':
+      emoticon = require('../../assets/sleeping.png');
+      title = 'Sono';
+      color = 'purple';
+      break;
+    default:
+      emoticon = require('../../assets/happy.png');
+      title = 'Bem';
+      color = 'red';
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
@@ -28,10 +63,8 @@ function Status({navigation, route}) {
         <Text style={styles.date.text}>{dataDailys.date}</Text>
       </View>
       <View style={styles.status}>
-        <Image style={styles.status.emotion} source={dataDailys.image} />
-        <Text style={[styles.status.text, {color: dataDailys.color}]}>
-          {dataDailys.title}
-        </Text>
+        <Image style={styles.status.emotion} source={emoticon} />
+        <Text style={[styles.status.text, {color: color}]}>{title}</Text>
       </View>
       <View style={styles.options}>
         {dataDailys.activities.map(({id, name}) => {
