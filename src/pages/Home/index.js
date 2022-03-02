@@ -10,7 +10,6 @@ import {
   View,
 } from 'react-native';
 
-import DataItem from '../../mocks/statusItem';
 import {getDailys} from '../../data/DailyEntries';
 
 function Home({navigation}) {
@@ -74,8 +73,6 @@ function Home({navigation}) {
             image: mood,
             date: dateFull,
             hours: hoursFull,
-            title: mood,
-            color: '#000',
             activities: activities,
             text: short_description,
             id: id,

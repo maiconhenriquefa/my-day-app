@@ -13,19 +13,26 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import ItemEmoticon from '../../components/ItemEmoticon';
 import ItemActivities from '../../components/ItemActivities';
 import Activities from '../../data/Activities';
-import happy from '../../assets/happy.png';
-import confused from '../../assets/confused.png';
-import nervous from '../../assets/nervous.png';
-import sad from '../../assets/sad.png';
-import sleeping from '../../assets/sleeping.png';
 import {updateDaily, addNewDaily, deleteDaily} from '../../data/DailyEntries';
 
 const emoticonList = [
-  {text: 'bem', color: 'red', emoticon: happy},
-  {text: 'confuso', color: 'blue', emoticon: confused},
-  {text: 'triste', color: 'green', emoticon: sad},
-  {text: 'sono', color: 'orange', emoticon: sleeping},
-  {text: 'mal', color: 'purple', emoticon: nervous},
+  {text: 'bem', color: 'red', emoticon: require('../../assets/happy.png')},
+  {
+    text: 'confuso',
+    color: 'blue',
+    emoticon: require('../../assets/confused.png'),
+  },
+  {
+    text: 'triste',
+    color: 'green',
+    emoticon: require('../../assets/nervous.png'),
+  },
+  {text: 'sono', color: 'orange', emoticon: require('../../assets/sad.png')},
+  {
+    text: 'mal',
+    color: 'purple',
+    emoticon: require('../../assets/sleeping.png'),
+  },
 ];
 
 const Add = ({navigation}) => {
@@ -38,7 +45,8 @@ const Add = ({navigation}) => {
     },
   });
 
-  const [isEmoji, setIsEmoji] = React.useState(false);
+  const [isActiveEmoticon, setIsActiveEmoticon] = React.useState();
+  const [isActive, setIsActive] = React.useState();
   const {dataActivities} = Activities();
 
   function OnChangeSaved() {
@@ -69,18 +77,20 @@ const Add = ({navigation}) => {
             </View>
           </View>
           <View style={styles.emoticons}>
-            {emoticonList.map(({text, emoticon, color}) => {
+            {emoticonList.map(({text, emoticon, color}, index) => {
               return (
                 <TouchableOpacity
                   onPress={() => {
-                    setIsEmoji(!isEmoji);
+                    setIsActiveEmoticon(index);
                     setDataSaved({
                       ...dataSaved,
                       mood: emoticon,
                     });
                   }}>
                   <ItemEmoticon
-                    active={isEmoji}
+                    style={
+                      isActiveEmoticon === index && styles.emoticons.active
+                    }
                     key={emoticon}
                     text={text}
                     color={color}
@@ -95,9 +105,10 @@ const Add = ({navigation}) => {
               return (
                 <TouchableOpacity
                   onPress={() => {
-                    setDataSaved(dataSaved =>
-                      dataSaved.daily_entry.activity_ids.push(id),
-                    );
+                    setDataSaved(dataSaved => [
+                      ...dataSaved.daily_entry.activity_ids,
+                      id,
+                    ]);
                     console.warn(dataSaved);
                   }}>
                   <ItemActivities key={id} name={name} />

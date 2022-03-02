@@ -37,6 +37,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    active: {
+      borderRadius: 50,
+      borderWidth: 5,
+      borderColor: '#304FFE',
+      width: 48,
+      height: 48,
+      margin: -2,
+    },
   },
   activities: {
     Height: 300,
