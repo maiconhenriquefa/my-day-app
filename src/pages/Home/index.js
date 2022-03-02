@@ -1,7 +1,14 @@
 import React from 'react';
 import styles from './styles';
 import ItemStatus from '../../components/ItemStatus';
-import {SafeAreaView, TouchableOpacity, FlatList, Text} from 'react-native';
+import {
+  SafeAreaView,
+  TouchableOpacity,
+  FlatList,
+  Text,
+  ActivityIndicator,
+  View,
+} from 'react-native';
 
 import DataItem from '../../mocks/statusItem';
 import {getDailys} from '../../data/DailyEntries';
@@ -96,7 +103,10 @@ function Home({navigation}) {
           keyExtractor={item => item.id}
         />
       ) : (
-        <Text style={styles.loading}>carregando...</Text>
+        <View style={styles.loading}>
+          <Text style={styles.loading.text}>Carregando</Text>
+          <ActivityIndicator size="large" color="#304FFE" />
+        </View>
       )}
     </SafeAreaView>
   );

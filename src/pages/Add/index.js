@@ -36,6 +36,9 @@ const Add = ({navigation}) => {
     description: '',
     username: 'maicon',
   });
+  const [activitiesSaved, setactivitiesSaved] = React.useState([]);
+  const [isEmoji, setIsEmoji] = React.useState(false);
+
   const {dataActivities} = Activities();
 
   function OnChangeSaved() {
@@ -70,12 +73,14 @@ const Add = ({navigation}) => {
               return (
                 <TouchableOpacity
                   onPress={() => {
+                    setIsEmoji(!isEmoji);
                     setdataSaved({
                       ...dataSaved,
                       mood: emoticon,
                     });
                   }}>
                   <ItemEmoticon
+                    active={isEmoji}
                     key={emoticon}
                     text={text}
                     color={color}
@@ -87,7 +92,14 @@ const Add = ({navigation}) => {
           </View>
           <View style={styles.activities}>
             {dataActivities.map(({id, name}) => {
-              return <ItemActivities key={name} name={name} />;
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    setdataSaved({});
+                  }}>
+                  <ItemActivities key={id} name={name} />
+                </TouchableOpacity>
+              );
             })}
           </View>
           <TextInput

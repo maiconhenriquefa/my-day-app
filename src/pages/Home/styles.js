@@ -8,10 +8,14 @@ const styles = StyleSheet.create({
   },
   loading: {
     flex: 1,
-    textAlign: 'center',
-    fontSize: 28,
+    flexDirection: 'column',
     alignSelf: 'center',
-    textTransform: 'uppercase',
+    text: {
+      marginBottom: 20,
+      textTransform: 'uppercase',
+      fontSize: 24,
+      textAlign: 'center',
+    },
   },
 });
 
