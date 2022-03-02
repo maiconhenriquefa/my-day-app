@@ -27,14 +27,14 @@ export const listIconsActivities = {
   movies: 'local-movies',
 };
 
-function ItemActivities({id, name}) {
+function ItemActivities({id, name, style, color}) {
   return (
     <View style={styles.activities__item}>
-      <View style={styles.box__icon}>
+      <View style={[styles.box__icon, style]}>
         <MaterialIcons
           key={id}
           name={listIconsActivities[name]}
-          style={styles.activities__icon}
+          style={[styles.activities__icon, {color: color}]}
         />
       </View>
       <View>

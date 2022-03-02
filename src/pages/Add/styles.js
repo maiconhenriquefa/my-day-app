@@ -54,6 +54,9 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
+    active: {
+      backgroundColor: '#304FFE',
+    },
   },
   input: {
     width: 345,

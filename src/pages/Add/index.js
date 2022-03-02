@@ -51,21 +51,27 @@ const emoticonList = [
 const Add = ({navigation}) => {
   const [dataSaved, setDataSaved] = React.useState({
     daily_entry: {
-      mood: 'happy',
+      mood: '',
       activity_ids: [],
-      description: 'teste',
+      description: '',
       username: 'maicon',
     },
   });
 
   const [isActiveEmoticon, setIsActiveEmoticon] = React.useState();
-  const [isActiveActivities, setIsActiveActivities] = React.useState([]);
+  const [listDataActive, setListDataActive] = React.useState([]);
+  const [isActiveActive, setIsActiveActive] = React.useState([]);
   const {dataActivities} = Activities();
 
   function OnChangeSaved() {
     navigation.navigate('Home');
     addNewDaily(dataSaved);
+    console.warn(dataSaved);
   }
+
+  React.useEffect(() => {
+    return setDataSaved(dataSaved);
+  }, [dataSaved]);
 
   return (
     dataActivities && (
@@ -102,7 +108,6 @@ const Add = ({navigation}) => {
                           mood: emoticonText, // copy all other key-value pairs of food object
                         },
                       }));
-                      console.warn(dataSaved);
                     }}>
                     <ItemEmoticon
                       style={
@@ -119,19 +124,36 @@ const Add = ({navigation}) => {
             )}
           </View>
           <View style={styles.activities}>
-            {dataActivities.map(({id, name}) => {
+            {dataActivities.map(({id, name}, index) => {
               return (
                 <TouchableOpacity
                   onPress={() => {
-                    setDataSaved();
-                    console.warn(dataSaved);
+                    if (listDataActive.length < 2) {
+                      setListDataActive([...listDataActive, id]);
+                      setIsActiveActive([...isActiveActive, index]);
+                    }
+                    if (isActiveActive.includes(index)) {
+                      const fullActives = isActiveActive.filter(
+                        active => active !== index,
+                      );
+                      setListDataActive([...fullActives]);
+                      setIsActiveActive([...fullActives]);
+                    }
+                    setDataSaved(prevState => ({
+                      daily_entry: {
+                        ...prevState.daily_entry,
+                        activity_ids: [...listDataActive], // copy all other key-value pairs of food object
+                      },
+                    }));
+                    console.warn(listDataActive.length);
                   }}>
                   <ItemActivities
                     key={id}
                     name={name}
-                    // style={
-                    //   isActiveEmoticon === index && styles.emoticons.active
-                    // }
+                    style={
+                      isActiveActive.includes(index) && styles.activities.active
+                    }
+                    color={isActiveActive.includes(index) ? '#eee' : '#111'}
                   />
                 </TouchableOpacity>
               );
@@ -140,9 +162,14 @@ const Add = ({navigation}) => {
           <TextInput
             style={styles.input}
             placeholder="Escreva aqui o que aconteceu hoje..."
-            onChangeText={description =>
-              setDataSaved({...dataSaved, description: description})
-            }
+            onChangeText={description => {
+              setDataSaved(prevState => ({
+                daily_entry: {
+                  ...prevState.daily_entry,
+                  description: description, // copy all other key-value pairs of food object
+                },
+              }));
+            }}
           />
           <TouchableOpacity
             style={styles.button}
