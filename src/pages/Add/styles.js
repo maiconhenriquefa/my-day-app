@@ -38,12 +38,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     active: {
+      padding: 20,
       borderRadius: 50,
       borderWidth: 5,
       borderColor: '#304FFE',
-      width: 48,
-      height: 48,
-      margin: -2,
+      margin: -3,
     },
   },
   activities: {
