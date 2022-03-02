@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
-import ItemEmoticon from '../ItemEmoticon';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Activities from '../../data/Activities';
 import {listIconsActivities} from '../ItemActivities';

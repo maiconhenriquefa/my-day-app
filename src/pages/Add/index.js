@@ -29,16 +29,16 @@ const emoticonList = [
 ];
 
 const Add = ({navigation}) => {
-  const [dataSaved, setdataSaved] = React.useState({
-    id: 0,
-    mood: '',
-    activity_ids: [1, 2],
-    description: '',
-    username: 'maicon',
+  const [dataSaved, setDataSaved] = React.useState({
+    daily_entry: {
+      mood: 'happy',
+      activity_ids: [1, 2],
+      description: 'teste',
+      username: 'maicon',
+    },
   });
-  const [activitiesSaved, setactivitiesSaved] = React.useState([]);
-  const [isEmoji, setIsEmoji] = React.useState(false);
 
+  const [isEmoji, setIsEmoji] = React.useState(false);
   const {dataActivities} = Activities();
 
   function OnChangeSaved() {
@@ -74,7 +74,7 @@ const Add = ({navigation}) => {
                 <TouchableOpacity
                   onPress={() => {
                     setIsEmoji(!isEmoji);
-                    setdataSaved({
+                    setDataSaved({
                       ...dataSaved,
                       mood: emoticon,
                     });
@@ -95,7 +95,10 @@ const Add = ({navigation}) => {
               return (
                 <TouchableOpacity
                   onPress={() => {
-                    setdataSaved({});
+                    setDataSaved(dataSaved =>
+                      dataSaved.daily_entry.activity_ids.push(id),
+                    );
+                    console.warn(dataSaved);
                   }}>
                   <ItemActivities key={id} name={name} />
                 </TouchableOpacity>
@@ -106,7 +109,7 @@ const Add = ({navigation}) => {
             style={styles.input}
             placeholder="Escreva aqui o que aconteceu hoje..."
             onChangeText={description =>
-              setdataSaved({...dataSaved, description: description})
+              setDataSaved({...dataSaved, description: description})
             }
           />
           <TouchableOpacity

@@ -12,7 +12,6 @@ function ItemEmoticon({color, emoticon, text, active}) {
   return (
     <View style={styles.emoticons__item}>
       <Image style={[styles.emoticons__img, activeStyle]} source={emoticon} />
-      {console.warn(active)}
       <Text style={{color: color}}>{text}</Text>
     </View>
   );

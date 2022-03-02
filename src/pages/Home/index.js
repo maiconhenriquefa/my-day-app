@@ -70,15 +70,17 @@ function Home({navigation}) {
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => {
-          DataItem.image = mood;
-          DataItem.date = dateFull;
-          DataItem.hours = hoursFull;
-          DataItem.title = mood;
-          DataItem.color = '#000';
-          DataItem.activities = activities;
-          DataItem.text = short_description;
-          DataItem.id = id;
-          navigation.navigate('Status');
+          const daily = {
+            image: mood,
+            date: dateFull,
+            hours: hoursFull,
+            title: mood,
+            color: '#000',
+            activities: activities,
+            text: short_description,
+            id: id,
+          };
+          navigation.navigate('Status', daily);
         }}>
         <ItemStatus
           statusEmoji={mood}
