@@ -72,9 +72,12 @@ function ItemStatus({
       </View>
 
       <View style={styles.options}>
-        {activities.map(({id, name}) => {
+        {activities.map(({id, name}, index) => {
           return (
             <View style={styles.options}>
+              {index > 0 && (
+                <Entypo name="dot-single" color="black" size={20} />
+              )}
               <MaterialIcons
                 style={styles.options.activities}
                 key={id}
@@ -83,7 +86,6 @@ function ItemStatus({
               <Text style={styles.options.text}>
                 {listNamesActivities[name]}
               </Text>
-              <Entypo name="dot-single" color="black" size={20} />
             </View>
           );
         })}
