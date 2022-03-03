@@ -10,11 +10,14 @@ import {listIconsActivities} from '../../components/ItemActivities';
 import {listNamesActivities} from '../../components/ItemActivities';
 
 import {getDaily} from '../../data/DailyEntries';
+import DateFormat from '../../components/DateFormat';
 
 function Status({navigation, route}) {
-  const dataDailys = route.params;
   const idDaily = route.params.id;
   const [daily, setDaily] = React.useState(null);
+
+  const {hoursFull} = DateFormat(daily && daily.created_at);
+  const {dateFull} = DateFormat(daily && daily.created_at);
 
   React.useEffect(() => {
     async function componentDidMount() {
@@ -74,11 +77,11 @@ function Status({navigation, route}) {
       </TouchableOpacity>
       <View style={styles.hours}>
         <SimpleLineIcons name="clock" color="#969696" size={14} />
-        <Text style={styles.hours.text}>{dataDailys.hours}</Text>
+        <Text style={styles.hours.text}>{daily && hoursFull}</Text>
       </View>
       <View style={styles.date}>
         <SimpleLineIcons name="calendar" color="#969696" size={14} />
-        <Text style={styles.date.text}>{dataDailys.date}</Text>
+        <Text style={styles.date.text}>{daily && dateFull}</Text>
       </View>
       <View style={styles.status}>
         <Image style={styles.status.emotion} source={emoticon} />

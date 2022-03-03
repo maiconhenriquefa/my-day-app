@@ -7,6 +7,7 @@ import {
   ScrollView,
   Modal,
 } from 'react-native';
+
 import styles from './styles';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
