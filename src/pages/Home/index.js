@@ -17,12 +17,14 @@ function Home({navigation}) {
 
   React.useEffect(() => {
     async function componentDidMount() {
-      try {
-        const {dataDailys} = await getDailys();
-        setDailysList(dataDailys);
-      } catch (error) {
-        console.warn(error);
-      }
+      await getDailys()
+        .then(response => {
+          setDailysList(response.dataDailys);
+        })
+        .catch(error => {
+          console.warn(error);
+          throw error;
+        });
     }
     componentDidMount();
   }, [dailysList]);

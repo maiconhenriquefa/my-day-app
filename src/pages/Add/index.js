@@ -66,12 +66,7 @@ const Add = ({navigation}) => {
   function OnChangeSaved() {
     navigation.navigate('Home');
     addNewDaily(dataSaved);
-    console.warn(dataSaved);
   }
-
-  React.useEffect(() => {
-    return setDataSaved(dataSaved);
-  }, [dataSaved]);
 
   return (
     dataActivities && (
@@ -105,7 +100,7 @@ const Add = ({navigation}) => {
                       setDataSaved(prevState => ({
                         daily_entry: {
                           ...prevState.daily_entry,
-                          mood: emoticonText, // copy all other key-value pairs of food object
+                          mood: emoticonText,
                         },
                       }));
                     }}>
@@ -113,7 +108,7 @@ const Add = ({navigation}) => {
                       style={
                         isActiveEmoticon === index && styles.emoticons.active
                       }
-                      key={emoticon}
+                      key={index}
                       text={text}
                       color={isActiveEmoticon === index ? color : '#969696'}
                       emoticon={emoticon}
@@ -128,27 +123,40 @@ const Add = ({navigation}) => {
               return (
                 <TouchableOpacity
                   onPress={() => {
-                    if (listDataActive.length < 2) {
+                    if (listDataActive.length < 3) {
                       setListDataActive([...listDataActive, id]);
                       setIsActiveActive([...isActiveActive, index]);
+
+                      setDataSaved(prevState => ({
+                        daily_entry: {
+                          ...prevState.daily_entry,
+                          activity_ids: [
+                            ...prevState.daily_entry.activity_ids,
+                            id,
+                          ],
+                        },
+                      }));
                     }
                     if (isActiveActive.includes(index)) {
-                      const fullActives = isActiveActive.filter(
-                        active => active !== index,
-                      );
-                      setListDataActive([...fullActives]);
-                      setIsActiveActive([...fullActives]);
+                      const fullIsActives = isActiveActive.filter(active => {
+                        return active !== index;
+                      });
+                      const fullListActives = listDataActive.filter(active => {
+                        return active !== id;
+                      });
+                      setListDataActive([...fullListActives]);
+                      setIsActiveActive([...fullIsActives]);
+
+                      setDataSaved(prevState => ({
+                        daily_entry: {
+                          ...prevState.daily_entry,
+                          activity_ids: [...fullListActives],
+                        },
+                      }));
                     }
-                    setDataSaved(prevState => ({
-                      daily_entry: {
-                        ...prevState.daily_entry,
-                        activity_ids: [...listDataActive], // copy all other key-value pairs of food object
-                      },
-                    }));
-                    console.warn(listDataActive.length);
                   }}>
                   <ItemActivities
-                    key={id}
+                    key={index}
                     name={name}
                     style={
                       isActiveActive.includes(index) && styles.activities.active
@@ -166,7 +174,7 @@ const Add = ({navigation}) => {
               setDataSaved(prevState => ({
                 daily_entry: {
                   ...prevState.daily_entry,
-                  description: description, // copy all other key-value pairs of food object
+                  description: description,
                 },
               }));
             }}

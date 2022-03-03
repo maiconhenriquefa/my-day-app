@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {item} from './ApiCollection.json';
 
 const urlDefaultDailys = axios.create({
   baseURL: 'https://shrouded-shelf-01513.herokuapp.com/daily_entries',
@@ -13,9 +12,10 @@ export async function getDailys() {
       dataDailys = response.data;
     })
     .catch(error => {
+      console.warn(error);
       throw error;
     });
-  return {dataDailys};
+  return await {dataDailys};
 }
 
 export async function addNewDaily(newUser) {
