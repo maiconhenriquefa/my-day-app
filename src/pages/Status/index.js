@@ -11,13 +11,14 @@ import {listNamesActivities} from '../../components/ItemActivities';
 
 import {getDaily} from '../../data/DailyEntries';
 import DateFormat from '../../components/DateFormat';
+import EmoticonConfig from '../../components/EmoticonConfig';
 
 function Status({navigation, route}) {
-  const idDaily = route.params.id;
+  const idDaily = route.params;
   const [daily, setDaily] = React.useState(null);
 
-  const {hoursFull} = DateFormat(daily && daily.created_at);
-  const {dateFull} = DateFormat(daily && daily.created_at);
+  const {hoursFull, dateFull} = DateFormat(daily && daily.created_at);
+  const {emoticon, title, color} = EmoticonConfig(daily && daily.mood);
 
   React.useEffect(() => {
     async function componentDidMount() {
@@ -32,41 +33,6 @@ function Status({navigation, route}) {
     }
     componentDidMount();
   }, [daily, idDaily]);
-
-  let emoticon;
-  let title;
-  let color;
-  switch (daily && daily.mood) {
-    case 'happy':
-      emoticon = require('../../assets/happy.png');
-      title = 'Bem';
-      color = 'red';
-      break;
-    case 'nervous':
-      emoticon = require('../../assets/nervous.png');
-      title = 'Mal';
-      color = 'blue';
-      break;
-    case 'sad':
-      emoticon = require('../../assets/sad.png');
-      title = 'Triste';
-      color = 'green';
-      break;
-    case 'confused':
-      emoticon = require('../../assets/confused.png');
-      title = 'Confuso';
-      color = 'orange';
-      break;
-    case 'sleeping':
-      emoticon = require('../../assets/sleeping.png');
-      title = 'Sono';
-      color = 'purple';
-      break;
-    default:
-      emoticon = require('../../assets/happy.png');
-      title = 'Bem';
-      color = 'red';
-  }
 
   return (
     <SafeAreaView style={styles.container}>

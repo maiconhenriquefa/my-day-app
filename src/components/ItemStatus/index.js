@@ -6,48 +6,11 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Activities from '../../data/Activities';
 import {listIconsActivities} from '../ItemActivities';
 import {listNamesActivities} from '../ItemActivities';
+import DateFormat from '../DateFormat';
+import EmoticonConfig from '../EmoticonConfig';
 
-function ItemStatus({
-  statusText,
-  statusTitle,
-  statusEmoji,
-  date,
-  hours,
-  activities,
-}) {
-  let emoticon;
-  let title;
-  let color;
-  switch (statusEmoji) {
-    case 'happy':
-      emoticon = require('../../assets/happy.png');
-      title = 'Bem';
-      color = 'red';
-      break;
-    case 'nervous':
-      emoticon = require('../../assets/nervous.png');
-      title = 'Mal';
-      color = 'blue';
-      break;
-    case 'sad':
-      emoticon = require('../../assets/sad.png');
-      title = 'Triste';
-      color = 'green';
-      break;
-    case 'confused':
-      emoticon = require('../../assets/confused.png');
-      title = 'Confuso';
-      color = 'orange';
-      break;
-    case 'sleeping':
-      emoticon = require('../../assets/sleeping.png');
-      title = 'Sono';
-      color = 'purple';
-      break;
-    default:
-      emoticon = require('../../assets/happy.png');
-      color = 'Bem';
-  }
+function ItemStatus({description, emoji, date, hours, activities}) {
+  const {emoticon, title, color} = EmoticonConfig(emoji);
 
   const [listActivities, setListActivities] = React.useState([]);
   React.useEffect(() => {
@@ -56,7 +19,7 @@ function ItemStatus({
       setListActivities(dataActivities);
     }
     componentDidMount();
-  }, [setListActivities]);
+  }, [listActivities]);
 
   return (
     <View style={styles.container}>
@@ -70,7 +33,6 @@ function ItemStatus({
           </View>
         </View>
       </View>
-
       <View style={styles.options}>
         {activities.map(({id, name}, index) => {
           return (
@@ -92,7 +54,7 @@ function ItemStatus({
       </View>
       <View>
         <Text style={styles.description} numberOfLines={1} ellipsizeMode="tail">
-          {statusText}
+          {description}
         </Text>
       </View>
     </View>
