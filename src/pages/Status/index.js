@@ -9,13 +9,31 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import {listIconsActivities} from '../../components/ItemActivities';
 import {listNamesActivities} from '../../components/ItemActivities';
 
+import {getDaily} from '../../data/DailyEntries';
+
 function Status({navigation, route}) {
   const dataDailys = route.params;
+  const idDaily = route.params.id;
+  const [daily, setDaily] = React.useState(null);
+
+  React.useEffect(() => {
+    async function componentDidMount() {
+      await getDaily(idDaily)
+        .then(response => {
+          setDaily(response.dataDailys);
+        })
+        .catch(error => {
+          console.warn(error);
+          throw error;
+        });
+    }
+    componentDidMount();
+  }, [daily, idDaily]);
 
   let emoticon;
   let title;
   let color;
-  switch (dataDailys.image) {
+  switch (daily && daily.mood) {
     case 'happy':
       emoticon = require('../../assets/happy.png');
       title = 'Bem';
@@ -67,20 +85,25 @@ function Status({navigation, route}) {
         <Text style={[styles.status.text, {color: color}]}>{title}</Text>
       </View>
       <View style={styles.options}>
-        {dataDailys.activities.map(({id, name}) => {
-          return (
-            <View style={styles.options__item}>
-              <MaterialIcons
-                name={listIconsActivities[name]}
-                style={styles.item__icon}
-              />
-              <Text style={styles.item__text}>{listNamesActivities[name]}</Text>
-            </View>
-          );
-        })}
+        {daily &&
+          daily.activities.map(({id, name}) => {
+            return (
+              <View style={styles.options__item}>
+                <MaterialIcons
+                  name={listIconsActivities[name]}
+                  style={styles.item__icon}
+                />
+                <Text style={styles.item__text}>
+                  {listNamesActivities[name]}
+                </Text>
+              </View>
+            );
+          })}
       </View>
       <View style={styles.description}>
-        <Text style={styles.description.text}>{dataDailys.text}</Text>
+        {daily && (
+          <Text style={styles.description.text}>{daily.description}</Text>
+        )}
       </View>
     </SafeAreaView>
   );

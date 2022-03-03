@@ -10,16 +10,16 @@ import {
   View,
 } from 'react-native';
 
-import {getDailys} from '../../data/DailyEntries';
+import {getEntriesDailys} from '../../data/DailyEntries';
 
 function Home({navigation}) {
   const [dailysList, setDailysList] = React.useState(null);
 
   React.useEffect(() => {
     async function componentDidMount() {
-      await getDailys()
+      await getEntriesDailys()
         .then(response => {
-          setDailysList(response.dataDailys);
+          setDailysList(response.dataEntriesDailys);
         })
         .catch(error => {
           console.warn(error);

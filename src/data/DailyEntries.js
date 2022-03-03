@@ -4,10 +4,24 @@ const urlDefaultDailys = axios.create({
   baseURL: 'https://shrouded-shelf-01513.herokuapp.com/daily_entries',
 });
 
-export async function getDailys() {
-  let dataDailys;
+export async function getEntriesDailys() {
+  let dataEntriesDailys;
   await urlDefaultDailys
     .get('?username=maicon')
+    .then(response => {
+      dataEntriesDailys = response.data;
+    })
+    .catch(error => {
+      console.warn(error);
+      throw error;
+    });
+  return await {dataEntriesDailys};
+}
+
+export async function getDaily(id) {
+  let dataDailys;
+  await urlDefaultDailys
+    .get(`/${id}`)
     .then(response => {
       dataDailys = response.data;
     })
