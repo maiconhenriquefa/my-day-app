@@ -60,7 +60,6 @@ const Add = ({navigation}) => {
 
   const [isActiveEmoticon, setIsActiveEmoticon] = React.useState();
   const [listDataActive, setListDataActive] = React.useState([]);
-  const [isActiveActive, setIsActiveActive] = React.useState([]);
   const {dataActivities} = Activities();
 
   function OnChangeSaved() {
@@ -125,7 +124,6 @@ const Add = ({navigation}) => {
                   onPress={() => {
                     if (listDataActive.length < 3) {
                       setListDataActive([...listDataActive, id]);
-                      setIsActiveActive([...isActiveActive, index]);
 
                       setDataSaved(prevState => ({
                         daily_entry: {
@@ -137,15 +135,11 @@ const Add = ({navigation}) => {
                         },
                       }));
                     }
-                    if (isActiveActive.includes(index)) {
-                      const fullIsActives = isActiveActive.filter(active => {
-                        return active !== index;
-                      });
+                    if (listDataActive.includes(id)) {
                       const fullListActives = listDataActive.filter(active => {
                         return active !== id;
                       });
                       setListDataActive([...fullListActives]);
-                      setIsActiveActive([...fullIsActives]);
 
                       setDataSaved(prevState => ({
                         daily_entry: {
@@ -159,9 +153,9 @@ const Add = ({navigation}) => {
                     key={index}
                     name={name}
                     style={
-                      isActiveActive.includes(index) && styles.activities.active
+                      listDataActive.includes(id) && styles.activities.active
                     }
-                    color={isActiveActive.includes(index) ? '#eee' : '#111'}
+                    color={listDataActive.includes(id) ? '#eee' : '#111'}
                   />
                 </TouchableOpacity>
               );
