@@ -13,7 +13,6 @@ export async function getEntriesDailys() {
     })
     .catch(error => {
       console.warn(error);
-      throw error;
     });
   return await {dataEntriesDailys};
 }
@@ -27,7 +26,6 @@ export async function getDaily(id) {
     })
     .catch(error => {
       console.warn(error);
-      throw error;
     });
   return await {dataDailys};
 }
@@ -35,20 +33,14 @@ export async function getDaily(id) {
 export async function addNewDaily(newUser) {
   await urlDefaultDailys
     .post('', newUser)
-    .then(response => {
-      const data = response.data;
-      console.warn(data);
-    })
+    .then()
     .catch(error => console.warn(error));
 }
 
 export async function updateDaily(daily, id) {
   await urlDefaultDailys
     .put(`/${id}`, daily)
-    .then(response => {
-      const data = response.data;
-      console.warn(data);
-    })
+    .then()
     .catch(error => console.warn(error));
 }
 
@@ -57,19 +49,13 @@ export function deleteDaily(...id) {
     id.map(itemId =>
       urlDefaultDailys
         .delete(`/${itemId}`)
-        .then(response => {
-          const data = response.data;
-          console.warn(data);
-        })
+        .then()
         .catch(error => console.warn(error)),
     );
   } else {
     urlDefaultDailys
       .delete(`/${id}`)
-      .then(response => {
-        const data = response.data;
-        console.warn(data);
-      })
+      .then()
       .catch(error => console.warn(error));
   }
 }

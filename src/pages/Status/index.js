@@ -5,20 +5,18 @@ import styles from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-
-import {listIconsActivities} from '../../components/ItemActivities';
-import {listNamesActivities} from '../../components/ItemActivities';
-
 import {getDaily} from '../../data/DailyEntries';
 import DateFormat from '../../components/DateFormat';
-import EmoticonConfig from '../../components/EmoticonConfig';
+import ConfigEmoticons from '../../components/ConfigEmoticons';
+import ConfigActivities from '../../components/ConfigActivities';
 
 function Status({navigation, route}) {
   const idDaily = route.params;
   const [daily, setDaily] = React.useState(null);
 
   const {hoursFull, dateFull} = DateFormat(daily && daily.created_at);
-  const {emoticon, title, color} = EmoticonConfig(daily && daily.mood);
+  const {emoticon, title, color} = ConfigEmoticons(daily && daily.mood);
+  const {iconsOfActivities, namesOfActivities} = ConfigActivities();
 
   React.useEffect(() => {
     async function componentDidMount() {
@@ -59,12 +57,10 @@ function Status({navigation, route}) {
             return (
               <View style={styles.options__item}>
                 <MaterialIcons
-                  name={listIconsActivities[name]}
+                  name={iconsOfActivities[name]}
                   style={styles.item__icon}
                 />
-                <Text style={styles.item__text}>
-                  {listNamesActivities[name]}
-                </Text>
+                <Text style={styles.item__text}>{namesOfActivities[name]}</Text>
               </View>
             );
           })}

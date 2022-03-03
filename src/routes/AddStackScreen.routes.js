@@ -1,6 +1,5 @@
 import React from 'react';
 import Status from '../pages/Status';
-import HomeEmpty from '../pages/HomeEmpty';
 import Home from '../pages/Home';
 import {createStackNavigator} from '@react-navigation/stack';
 

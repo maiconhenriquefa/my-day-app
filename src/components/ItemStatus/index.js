@@ -3,23 +3,12 @@ import {View, Text, Image} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Activities from '../../data/Activities';
-import {listIconsActivities} from '../ItemActivities';
-import {listNamesActivities} from '../ItemActivities';
-import DateFormat from '../DateFormat';
-import EmoticonConfig from '../EmoticonConfig';
+import ConfigEmoticons from '../ConfigEmoticons';
+import ConfigActivities from '../ConfigActivities';
 
 function ItemStatus({description, emoji, date, hours, activities}) {
-  const {emoticon, title, color} = EmoticonConfig(emoji);
-
-  const [listActivities, setListActivities] = React.useState([]);
-  React.useEffect(() => {
-    async function componentDidMount() {
-      const {dataActivities} = await Activities();
-      setListActivities(dataActivities);
-    }
-    componentDidMount();
-  }, [listActivities]);
+  const {emoticon, title, color} = ConfigEmoticons(emoji);
+  const {iconsOfActivities, namesOfActivities} = ConfigActivities();
 
   return (
     <View style={styles.container}>
@@ -43,11 +32,9 @@ function ItemStatus({description, emoji, date, hours, activities}) {
               <MaterialIcons
                 style={styles.options.activities}
                 key={id}
-                name={listIconsActivities[name]}
+                name={iconsOfActivities[name]}
               />
-              <Text style={styles.options.text}>
-                {listNamesActivities[name]}
-              </Text>
+              <Text style={styles.options.text}>{namesOfActivities[name]}</Text>
             </View>
           );
         })}

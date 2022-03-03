@@ -1,14 +1,11 @@
 import React from 'react';
 import AddStackScreen from './AddStackScreen.routes';
 import Settings from '../pages/Settings';
-import Add from '../pages/Add';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ButtonAdd from '../components/ButtonAdd';
-import HomeEmpty from '../pages/HomeEmpty';
 import Home from '../pages/Home';
 import ButtonSettings from '../components/ButtonSettings';
 import ButtonHome from '../components/ButtonHome';
-import {Modal} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 

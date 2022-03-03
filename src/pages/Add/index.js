@@ -14,7 +14,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import ItemEmoticon from '../../components/ItemEmoticon';
 import ItemActivities from '../../components/ItemActivities';
 import Activities from '../../data/Activities';
-import {updateDaily, addNewDaily, deleteDaily} from '../../data/DailyEntries';
+import {addNewDaily} from '../../data/DailyEntries';
 
 const emoticonList = [
   {

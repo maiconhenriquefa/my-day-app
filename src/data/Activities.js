@@ -14,13 +14,11 @@ const Activities = () => {
       .then(response => {
         setDataActivities(response.data);
       })
-      .catch(error => console.warn(error.message));
+      .catch(error => console.warn(error));
   }
   getActivities();
 
-  return {
-    dataActivities,
-  };
+  return {dataActivities};
 };
 
 export default Activities;

@@ -3,8 +3,6 @@ import {View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 
-// import { Container } from './styles';
-
 const ButtonHome = ({color, focused}) => {
   return (
     <View
