@@ -1,17 +1,10 @@
 import React from 'react';
 import styles from './styles';
 import ItemStatus from '../../components/ItemStatus';
-import {
-  SafeAreaView,
-  TouchableOpacity,
-  FlatList,
-  Text,
-  ActivityIndicator,
-  View,
-} from 'react-native';
-
+import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
 import {getEntriesDailys} from '../../data/DailyEntries';
 import DateFormat from '../../components/DateFormat';
+import Loading from '../../components/Loading';
 
 function Home({navigation}) {
   const [dailysList, setDailysList] = React.useState(null);
@@ -52,22 +45,17 @@ function Home({navigation}) {
     );
   };
 
-  return (
+  return dailysList ? (
     <SafeAreaView style={styles.container}>
-      {dailysList ? (
-        <FlatList
-          contentContainerStyle={{paddingBottom: 25}}
-          data={dailysList}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-        />
-      ) : (
-        <View style={styles.loading}>
-          <Text style={styles.loading.text}>Carregando</Text>
-          <ActivityIndicator size="large" color="#304FFE" />
-        </View>
-      )}
+      <FlatList
+        contentContainerStyle={{paddingBottom: 25}}
+        data={dailysList}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
     </SafeAreaView>
+  ) : (
+    <Loading />
   );
 }
 

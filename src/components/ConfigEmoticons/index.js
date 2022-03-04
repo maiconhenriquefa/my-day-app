@@ -1,42 +1,40 @@
 function ConfigEmoticons(mood) {
   // const characteristicsEmoticons = [
   //   {
-  //     happy: {
-  //       emoticon: require('../../assets/happy.png'),
-  //       title: 'Bem',
-  //       color: 'red',
-  //     },
+  //     emoticonText: 'happy',
+  //     title: 'bem',
+  //     color: 'red',
+  //     emoticon: require('../../assets/happy.png'),
   //   },
   //   {
-  //     nervous: {
-  //       emoticon: require('../../assets/nervous.png'),
-  //       title: 'Mal',
-  //       color: 'blue',
-  //     },
+  //     emoticonText: 'confused',
+  //     title: 'confuso',
+  //     color: 'blue',
+  //     emoticon: require('../../assets/confused.png'),
   //   },
   //   {
-  //     sad: {
-  //       emoticon: require('../../assets/sad.png'),
-  //       title: 'Triste',
-  //       color: 'green',
-  //     },
+  //     emoticonText: 'sad',
+  //     title: 'triste',
+  //     color: 'green',
+  //     emoticon: require('../../assets/sad.png'),
   //   },
   //   {
-  //     confused: {
-  //       emoticon: require('../../assets/confused.png'),
-  //       title: 'Confuso',
-  //       color: 'orange',
-  //     },
+  //     emoticonText: 'sleeping',
+  //     title: 'sono',
+  //     color: 'orange',
+  //     emoticon: require('../../assets/sleeping.png'),
   //   },
   //   {
-  //     sleeping: {
-  //       emoticon: require('../../assets/sleeping.png'),
-  //       title: 'Sono',
-  //       color: 'purple',
-  //     },
+  //     emoticonText: 'nervous',
+  //     title: 'mal',
+  //     color: 'purple',
+  //     emoticon: require('../../assets/nervous.png'),
   //   },
   // ];
-  // console.warn(characteristicsEmoticons);
+
+  // const emoticon = characteristicsEmoticons.filter(({emoticon}) => emoticon);
+  // const title = characteristicsEmoticons.filter(({title}) => title);
+  // const color = characteristicsEmoticons.filter(({color}) => color);
 
   let emoticon;
   let title;
