@@ -7,7 +7,7 @@ import ConfigEmoticons from '../ConfigEmoticons';
 import ConfigActivities from '../ConfigActivities';
 
 function ItemStatus({description, emoji, date, hours, activities}) {
-  const {emoticon, title, color, emoticonteste} = ConfigEmoticons(emoji);
+  const {emoticon, title, color} = ConfigEmoticons(emoji);
   const {iconsOfActivities, namesOfActivities} = ConfigActivities();
 
   return (
@@ -25,13 +25,12 @@ function ItemStatus({description, emoji, date, hours, activities}) {
       <View style={styles.options}>
         {activities.map(({id, name}, index) => {
           return (
-            <View style={styles.options}>
+            <View key={id} style={styles.options}>
               {index > 0 && (
                 <Entypo name="dot-single" color="black" size={20} />
               )}
               <MaterialIcons
                 style={styles.options.activities}
-                key={id}
                 name={iconsOfActivities[name]}
               />
               <Text style={styles.options.text}>{namesOfActivities[name]}</Text>

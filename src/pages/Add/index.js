@@ -13,8 +13,7 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ItemEmoticon from '../../components/ItemEmoticon';
 import ItemActivities from '../../components/ItemActivities';
-import Activities from '../../data/Activities';
-import {addNewDaily} from '../../data/DailyEntries';
+import {addNewDaily, getActivities} from '../../data/DailyEntries';
 import Loading from '../../components/Loading';
 import EmoticonList from '../../components/EmoticonList';
 import DateFormat from '../../components/DateFormat';
@@ -32,7 +31,15 @@ const Add = ({navigation}) => {
   const [isActiveEmoticon, setIsActiveEmoticon] = React.useState();
   const [listDataActive, setListDataActive] = React.useState([]);
   const {hoursFull, dateFull} = DateFormat(new Date());
-  const {dataActivities} = Activities();
+  const [dataActivities, setDataActivities] = React.useState();
+
+  React.useEffect(() => {
+    async function getResponseActivities() {
+      const dataResponseActivities = await getActivities();
+      setDataActivities(dataResponseActivities);
+    }
+    getResponseActivities();
+  }, []);
 
   function OnChangeSaved() {
     navigation.navigate('Home');

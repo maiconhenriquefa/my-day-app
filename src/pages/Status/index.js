@@ -9,6 +9,7 @@ import {getDaily} from '../../data/DailyEntries';
 import DateFormat from '../../components/DateFormat';
 import ConfigEmoticons from '../../components/ConfigEmoticons';
 import ConfigActivities from '../../components/ConfigActivities';
+import Loading from '../../components/Loading';
 
 function Status({navigation, route}) {
   const idDaily = route.params;
@@ -20,19 +21,13 @@ function Status({navigation, route}) {
 
   React.useEffect(() => {
     async function componentDidMount() {
-      await getDaily(idDaily)
-        .then(response => {
-          setDaily(response);
-        })
-        .catch(error => {
-          console.warn(error);
-          throw error;
-        });
+      const responseDataDaily = await getDaily(idDaily);
+      setDaily(responseDataDaily);
     }
     componentDidMount();
-  }, [daily, idDaily]);
+  }, [idDaily]);
 
-  return (
+  return daily ? (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
         style={styles.item__backLeft}
@@ -55,7 +50,7 @@ function Status({navigation, route}) {
         {daily &&
           daily.activities.map(({id, name}) => {
             return (
-              <View style={styles.options__item}>
+              <View key={id} style={styles.options__item}>
                 <MaterialIcons
                   name={iconsOfActivities[name]}
                   style={styles.item__icon}
@@ -71,6 +66,8 @@ function Status({navigation, route}) {
         )}
       </View>
     </SafeAreaView>
+  ) : (
+    <Loading />
   );
 }
 

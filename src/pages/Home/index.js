@@ -2,30 +2,20 @@ import React from 'react';
 import styles from './styles';
 import ItemStatus from '../../components/ItemStatus';
 import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
-import urlDefaultDailys, {getEntriesDailys} from '../../data/DailyEntries';
+import {getEntriesDailys} from '../../data/DailyEntries';
 import DateFormat from '../../components/DateFormat';
 import Loading from '../../components/Loading';
-import axios from 'axios';
 
 function Home({navigation}) {
   const [dailysList, setDailysList] = React.useState(null);
 
   React.useEffect(() => {
-    const CancelToken = axios.CancelToken;
-
-    // instância do source, onde está contido o token de cancelamento
-    const source = CancelToken.source();
     async function componentDidMount() {
-      const response = await urlDefaultDailys.get('?username=maicon', {
-        cancelToken: source.token,
-      });
-      setDailysList(response.data);
+      const response = await getEntriesDailys();
+      setDailysList(response);
     }
     componentDidMount();
-    return () => {
-      source.cancel();
-    };
-  }, []);
+  }, [dailysList]);
 
   const renderItem = ({
     item: {id, mood, created_at, short_description, activities},
@@ -39,7 +29,6 @@ function Home({navigation}) {
           navigation.navigate('Status', id);
         }}>
         <ItemStatus
-          key={id}
           emoji={mood}
           description={short_description}
           activities={activities}
@@ -54,8 +43,8 @@ function Home({navigation}) {
     <SafeAreaView style={styles.container}>
       <FlatList
         contentContainerStyle={{paddingBottom: 25}}
-        data={dailysList ? dailysList : []}
-        renderItem={dailysList ? renderItem : []}
+        data={dailysList}
+        renderItem={renderItem}
         keyExtractor={item => item.id}
       />
     </SafeAreaView>
