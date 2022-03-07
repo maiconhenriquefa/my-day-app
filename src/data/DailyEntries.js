@@ -5,29 +5,23 @@ const urlDefaultDailys = axios.create({
 });
 
 export async function getEntriesDailys() {
-  let dataEntriesDailys;
-  await urlDefaultDailys
-    .get('?username=maicon')
-    .then(response => {
-      dataEntriesDailys = response.data;
-    })
-    .catch(error => {
-      console.warn(error);
-    });
-  return await {dataEntriesDailys};
+  try {
+    return await (
+      await urlDefaultDailys.get('?username=maicon')
+    ).data;
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 export async function getDaily(id) {
-  let dataDailys;
-  await urlDefaultDailys
-    .get(`/${id}`)
-    .then(response => {
-      dataDailys = response.data;
-    })
-    .catch(error => {
-      console.warn(error);
-    });
-  return await {dataDailys};
+  try {
+    return await (
+      await urlDefaultDailys.get(`/${id}`)
+    ).data;
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 export async function addNewDaily(newUser) {

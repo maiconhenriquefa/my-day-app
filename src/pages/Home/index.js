@@ -10,31 +10,31 @@ function Home({navigation}) {
   const [dailysList, setDailysList] = React.useState(null);
 
   React.useEffect(() => {
-    async function componentDidMount() {
-      await getEntriesDailys()
-        .then(response => {
-          setDailysList(response.dataEntriesDailys);
-        })
-        .catch(error => {
-          console.warn(error);
-          throw error;
-        });
-    }
-    componentDidMount();
+    getEntriesDailys()
+      .then(response => {
+        setDailysList(response);
+      })
+      .catch(error => {
+        console.warn(error);
+        throw error;
+      });
   }, [dailysList]);
 
-  const renderItem = ({
-    item: {id, mood, created_at, short_description, activities},
-  }) => {
+  const renderItem = (
+    {item: {id, mood, created_at, short_description, activities}},
+    index,
+  ) => {
     const {hoursFull, dateFull} = DateFormat(created_at);
 
     return (
       <TouchableOpacity
+        key={index}
         activeOpacity={0.8}
         onPress={() => {
           navigation.navigate('Status', id);
         }}>
         <ItemStatus
+          key={index}
           emoji={mood}
           description={short_description}
           activities={activities}
@@ -51,7 +51,7 @@ function Home({navigation}) {
         contentContainerStyle={{paddingBottom: 25}}
         data={dailysList}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        // keyExtractor={(item, index) => index}
       />
     </SafeAreaView>
   ) : (

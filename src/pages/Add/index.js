@@ -94,6 +94,7 @@ const Add = ({navigation}) => {
           {emoticonList.map(({text, emoticon, color, emoticonText}, index) => {
             return (
               <TouchableOpacity
+                key={index}
                 onPress={() => {
                   setIsActiveEmoticon(index);
                   setDataSaved(prevState => ({
@@ -118,6 +119,7 @@ const Add = ({navigation}) => {
           {dataActivities.map(({id, name}, index) => {
             return (
               <TouchableOpacity
+                key={index}
                 onPress={() => {
                   if (listDataActive.length < 3) {
                     setListDataActive([...listDataActive, id]);

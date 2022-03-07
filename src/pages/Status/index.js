@@ -22,7 +22,7 @@ function Status({navigation, route}) {
     async function componentDidMount() {
       await getDaily(idDaily)
         .then(response => {
-          setDaily(response.dataDailys);
+          setDaily(response);
         })
         .catch(error => {
           console.warn(error);
