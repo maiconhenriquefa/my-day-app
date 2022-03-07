@@ -7,7 +7,7 @@ import ConfigEmoticons from '../ConfigEmoticons';
 import ConfigActivities from '../ConfigActivities';
 
 function ItemStatus({description, emoji, date, hours, activities}) {
-  const {emoticon, title, color} = ConfigEmoticons(emoji);
+  const {emoticon, title, color, emoticonteste} = ConfigEmoticons(emoji);
   const {iconsOfActivities, namesOfActivities} = ConfigActivities();
 
   return (

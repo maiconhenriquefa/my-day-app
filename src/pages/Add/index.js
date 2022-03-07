@@ -16,39 +16,8 @@ import ItemActivities from '../../components/ItemActivities';
 import Activities from '../../data/Activities';
 import {addNewDaily} from '../../data/DailyEntries';
 import Loading from '../../components/Loading';
-
-const emoticonList = [
-  {
-    emoticonText: 'happy',
-    text: 'bem',
-    color: 'red',
-    emoticon: require('../../assets/happy.png'),
-  },
-  {
-    emoticonText: 'confused',
-    text: 'confuso',
-    color: 'blue',
-    emoticon: require('../../assets/confused.png'),
-  },
-  {
-    emoticonText: 'sad',
-    text: 'triste',
-    color: 'green',
-    emoticon: require('../../assets/sad.png'),
-  },
-  {
-    emoticonText: 'sleeping',
-    text: 'sono',
-    color: 'orange',
-    emoticon: require('../../assets/sleeping.png'),
-  },
-  {
-    emoticonText: 'nervous',
-    text: 'mal',
-    color: 'purple',
-    emoticon: require('../../assets/nervous.png'),
-  },
-];
+import EmoticonList from '../../components/EmoticonList';
+import DateFormat from '../../components/DateFormat';
 
 const Add = ({navigation}) => {
   const [dataSaved, setDataSaved] = React.useState({
@@ -62,6 +31,7 @@ const Add = ({navigation}) => {
 
   const [isActiveEmoticon, setIsActiveEmoticon] = React.useState();
   const [listDataActive, setListDataActive] = React.useState([]);
+  const {hoursFull, dateFull} = DateFormat(new Date());
   const {dataActivities} = Activities();
 
   function OnChangeSaved() {
@@ -83,37 +53,41 @@ const Add = ({navigation}) => {
         <View style={styles.times}>
           <View style={styles.date}>
             <SimpleLineIcons name="calendar" color="#969696" size={14} />
-            <Text style={styles.times__text}>HOJE, 23 DE JANEIRO</Text>
+            <Text style={styles.times__text}>{dateFull}</Text>
           </View>
           <View style={styles.hours}>
             <SimpleLineIcons name="clock" color="#969696" size={14} />
-            <Text style={styles.times__text}>08:35</Text>
+            <Text style={styles.times__text}>{hoursFull}</Text>
           </View>
         </View>
         <View style={styles.emoticons}>
-          {emoticonList.map(({text, emoticon, color, emoticonText}, index) => {
-            return (
-              <TouchableOpacity
-                key={index}
-                onPress={() => {
-                  setIsActiveEmoticon(index);
-                  setDataSaved(prevState => ({
-                    daily_entry: {
-                      ...prevState.daily_entry,
-                      mood: emoticonText,
-                    },
-                  }));
-                }}>
-                <ItemEmoticon
-                  style={isActiveEmoticon === index && styles.emoticons.active}
+          {EmoticonList().map(
+            ({text, emoticon, color, emoticonText}, index) => {
+              return (
+                <TouchableOpacity
                   key={index}
-                  text={text}
-                  color={isActiveEmoticon === index ? color : '#969696'}
-                  emoticon={emoticon}
-                />
-              </TouchableOpacity>
-            );
-          })}
+                  onPress={() => {
+                    setIsActiveEmoticon(index);
+                    setDataSaved(prevState => ({
+                      daily_entry: {
+                        ...prevState.daily_entry,
+                        mood: emoticonText,
+                      },
+                    }));
+                  }}>
+                  <ItemEmoticon
+                    style={
+                      isActiveEmoticon === index && styles.emoticons.active
+                    }
+                    key={index}
+                    text={text}
+                    color={isActiveEmoticon === index ? color : '#969696'}
+                    emoticon={emoticon}
+                  />
+                </TouchableOpacity>
+              );
+            },
+          )}
         </View>
         <View style={styles.activities}>
           {dataActivities.map(({id, name}, index) => {

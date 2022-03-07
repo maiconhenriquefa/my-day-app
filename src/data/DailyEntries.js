@@ -53,3 +53,5 @@ export function deleteDaily(...id) {
       .catch(error => console.warn(error));
   }
 }
+
+export default urlDefaultDailys;
