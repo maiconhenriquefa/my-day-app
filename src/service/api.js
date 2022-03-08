@@ -6,7 +6,7 @@ const urlDefault = axios.create({
 
 export async function getEntriesDailys() {
   try {
-    const {data} = urlDefault.get('daily_entries?username=maicon');
+    const {data} = await urlDefault.get('daily_entries?username=maicon');
     return data;
   } catch (error) {
     console.warn(error);
@@ -15,7 +15,7 @@ export async function getEntriesDailys() {
 
 export async function getDaily(id) {
   try {
-    const {data} = urlDefault.get(`daily_entries/${id}`);
+    const {data} = await urlDefault.get(`daily_entries/${id}`);
     return data;
   } catch (error) {
     console.warn(error);
@@ -33,7 +33,7 @@ export async function getActivities() {
 
 export async function addNewDaily(newUser) {
   try {
-    const {data} = urlDefault.post('daily_entries', newUser);
+    const {data} = await urlDefault.post('daily_entries', newUser);
     return data;
   } catch (error) {
     console.warn(error);
@@ -42,7 +42,7 @@ export async function addNewDaily(newUser) {
 
 export async function updateDaily(daily, id) {
   try {
-    const {data} = urlDefault.put(`daily_entries/${id}`, daily);
+    const {data} = await urlDefault.put(`daily_entries/${id}`, daily);
     return data;
   } catch (error) {
     console.warn(error);

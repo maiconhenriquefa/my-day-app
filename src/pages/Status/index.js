@@ -5,7 +5,7 @@ import styles from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import {getDaily} from '../../data/DailyEntries';
+import {getDaily} from '../../service/api';
 import DateFormat from '../../components/DateFormat';
 import ConfigEmoticons from '../../components/ConfigEmoticons';
 import ConfigActivities from '../../components/ConfigActivities';

@@ -2,12 +2,14 @@ import React from 'react';
 import styles from './styles';
 import ItemStatus from '../../components/ItemStatus';
 import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
-import {getEntriesDailys} from '../../data/DailyEntries';
+import {deleteDaily, getEntriesDailys} from '../../service/api';
 import DateFormat from '../../components/DateFormat';
 import Loading from '../../components/Loading';
+import HomeEmpty from '../HomeEmpty';
 
 function Home({navigation}) {
   const [dailysList, setDailysList] = React.useState(null);
+  const [isLoading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     async function componentDidMount() {
@@ -39,7 +41,9 @@ function Home({navigation}) {
     );
   };
 
-  return dailysList ? (
+  return !dailysList ? (
+    <Loading />
+  ) : dailysList.length > 0 ? (
     <SafeAreaView style={styles.container}>
       <FlatList
         contentContainerStyle={{paddingBottom: 25}}
@@ -49,7 +53,7 @@ function Home({navigation}) {
       />
     </SafeAreaView>
   ) : (
-    <Loading />
+    <HomeEmpty />
   );
 }
 

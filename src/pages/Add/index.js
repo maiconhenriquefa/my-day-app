@@ -13,7 +13,7 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ItemEmoticon from '../../components/ItemEmoticon';
 import ItemActivities from '../../components/ItemActivities';
-import {addNewDaily, getActivities} from '../../data/DailyEntries';
+import {addNewDaily, getActivities} from '../../service/api';
 import Loading from '../../components/Loading';
 import EmoticonList from '../../components/EmoticonList';
 import DateFormat from '../../components/DateFormat';
