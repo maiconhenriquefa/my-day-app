@@ -1,4 +1,4 @@
-function DateFormat(created_at) {
+function dateFormat(created_at) {
   const date = new Date(created_at);
   const hours = date.getHours();
   const minutes = date.getMinutes();
@@ -36,4 +36,4 @@ function DateFormat(created_at) {
   return {dateFull, hoursFull};
 }
 
-export default DateFormat;
+export default dateFormat;

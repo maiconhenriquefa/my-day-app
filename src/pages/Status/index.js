@@ -6,18 +6,18 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import {getDaily} from '../../service/api';
-import DateFormat from '../../components/DateFormat';
-import ConfigEmoticons from '../../components/ConfigEmoticons';
-import ConfigActivities from '../../components/ConfigActivities';
+import dateFormat from '../../functions/dateFormat';
+import configEmoticons from '../../functions/configEmoticons';
+import configActivities from '../../functions/configActivities';
 import Loading from '../../components/Loading';
 
 function Status({navigation, route}) {
   const idDaily = route.params;
   const [daily, setDaily] = React.useState(null);
 
-  const {hoursFull, dateFull} = DateFormat(daily && daily.created_at);
-  const {emoticon, title, color} = ConfigEmoticons(daily && daily.mood);
-  const {iconsOfActivities, namesOfActivities} = ConfigActivities();
+  const {hoursFull, dateFull} = dateFormat(daily && daily.created_at);
+  const {emoticon, title, color} = configEmoticons(daily && daily.mood);
+  const {iconsOfActivities, namesOfActivities} = configActivities();
 
   React.useEffect(() => {
     async function componentDidMount() {

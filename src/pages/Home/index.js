@@ -3,13 +3,12 @@ import styles from './styles';
 import ItemStatus from '../../components/ItemStatus';
 import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
 import {deleteDaily, getEntriesDailys} from '../../service/api';
-import DateFormat from '../../components/DateFormat';
+import dateFormat from '../../functions/dateFormat';
 import Loading from '../../components/Loading';
 import HomeEmpty from '../HomeEmpty';
 
 function Home({navigation}) {
   const [dailysList, setDailysList] = React.useState(null);
-  const [isLoading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     async function componentDidMount() {
@@ -22,7 +21,7 @@ function Home({navigation}) {
   const renderItem = ({
     item: {id, mood, created_at, short_description, activities},
   }) => {
-    const {hoursFull, dateFull} = DateFormat(created_at);
+    const {hoursFull, dateFull} = dateFormat(created_at);
 
     return (
       <TouchableOpacity
@@ -40,10 +39,11 @@ function Home({navigation}) {
       </TouchableOpacity>
     );
   };
-
   return !dailysList ? (
     <Loading />
-  ) : dailysList.length > 0 ? (
+  ) : dailysList.length === 0 ? (
+    <HomeEmpty />
+  ) : (
     <SafeAreaView style={styles.container}>
       <FlatList
         contentContainerStyle={{paddingBottom: 25}}
@@ -52,8 +52,6 @@ function Home({navigation}) {
         keyExtractor={item => item.id}
       />
     </SafeAreaView>
-  ) : (
-    <HomeEmpty />
   );
 }
 

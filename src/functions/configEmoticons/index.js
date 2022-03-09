@@ -1,4 +1,4 @@
-function ConfigEmoticons(mood) {
+function configEmoticons(mood) {
   let emoticon;
   let title;
   let color;
@@ -36,4 +36,4 @@ function ConfigEmoticons(mood) {
   return {emoticon, title, color};
 }
 
-export default ConfigEmoticons;
+export default configEmoticons;

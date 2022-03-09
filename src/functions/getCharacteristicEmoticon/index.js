@@ -1,4 +1,4 @@
-export default function EmoticonList() {
+export default function getCharacteristicEmoticon() {
   const emoticonList = [
     {
       emoticonText: 'happy',

@@ -1,4 +1,4 @@
-function ConfigActivities() {
+function configActivities() {
   const namesOfActivities = {
     sports: 'esportes',
     cooking: 'cozinhar',
@@ -25,4 +25,4 @@ function ConfigActivities() {
   return {namesOfActivities, iconsOfActivities};
 }
 
-export default ConfigActivities;
+export default configActivities;

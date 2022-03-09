@@ -15,8 +15,8 @@ import ItemEmoticon from '../../components/ItemEmoticon';
 import ItemActivities from '../../components/ItemActivities';
 import {addNewDaily, getActivities} from '../../service/api';
 import Loading from '../../components/Loading';
-import EmoticonList from '../../components/EmoticonList';
-import DateFormat from '../../components/DateFormat';
+import getCharacteristicEmoticon from '../../functions/getCharacteristicEmoticon';
+import dateFormat from '../../functions/dateFormat';
 
 const Add = ({navigation}) => {
   const [dataSaved, setDataSaved] = React.useState({
@@ -30,7 +30,7 @@ const Add = ({navigation}) => {
 
   const [isActiveEmoticon, setIsActiveEmoticon] = React.useState();
   const [listDataActive, setListDataActive] = React.useState([]);
-  const {hoursFull, dateFull} = DateFormat(new Date());
+  const {hoursFull, dateFull} = dateFormat(new Date());
   const [dataActivities, setDataActivities] = React.useState();
 
   React.useEffect(() => {
@@ -68,7 +68,7 @@ const Add = ({navigation}) => {
           </View>
         </View>
         <View style={styles.emoticons}>
-          {EmoticonList().map(
+          {getCharacteristicEmoticon().map(
             ({text, emoticon, color, emoticonText}, index) => {
               return (
                 <TouchableOpacity
@@ -142,6 +142,7 @@ const Add = ({navigation}) => {
           })}
         </View>
         <TextInput
+          multiline={true}
           style={styles.input}
           placeholder="Escreva aqui o que aconteceu hoje..."
           onChangeText={description => {

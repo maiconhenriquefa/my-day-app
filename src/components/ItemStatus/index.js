@@ -3,12 +3,12 @@ import {View, Text, Image} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
-import ConfigEmoticons from '../ConfigEmoticons';
-import ConfigActivities from '../ConfigActivities';
+import configEmoticons from '../../functions/configEmoticons';
+import configActivities from '../../functions/configActivities';
 
 function ItemStatus({description, emoji, date, hours, activities}) {
-  const {emoticon, title, color} = ConfigEmoticons(emoji);
-  const {iconsOfActivities, namesOfActivities} = ConfigActivities();
+  const {emoticon, title, color} = configEmoticons(emoji);
+  const {iconsOfActivities, namesOfActivities} = configActivities();
 
   return (
     <View style={styles.container}>
