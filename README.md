@@ -1,5 +1,7 @@
 # My day App
 
+<img alt="apresentation" src="/mydayapp.gif" width="650" height="400" />
+
 ## Descrição
 
 Este projeto foi criado para aplicação no primeiro desafio do programa de estágio na <a href="https://compass.uol/">Compass</a>
