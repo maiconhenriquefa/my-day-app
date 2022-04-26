@@ -1,6 +1,6 @@
 # My day App
 
-<img alt="apresentation" src="/mydayapp.gif" width="650" height="400" />
+<img alt="apresentation" src="/my-day-app.gif" width="650" height="400" />
 
 ## Descrição
 
